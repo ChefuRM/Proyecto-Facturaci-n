@@ -6,7 +6,7 @@ package com.mycompany._proyectodenetbeans;
 
 /**
  *
- * @author Chefu
+ * @author Chefu el pito grande
  */
 public class Main extends javax.swing.JFrame {
 
