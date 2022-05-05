@@ -26,7 +26,7 @@ public class pArticulos extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        lArticulos = new javax.swing.JLabel();
         eCodigoP = new javax.swing.JLabel();
         eCodigoA = new javax.swing.JLabel();
         eDescripcionA = new javax.swing.JLabel();
@@ -44,7 +44,7 @@ public class pArticulos extends javax.swing.JPanel {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
 
-        jLabel1.setText("Articulos");
+        lArticulos.setText("Articulos");
 
         eCodigoP.setText("Codigo de Proveedor:");
 
@@ -78,7 +78,7 @@ public class pArticulos extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(263, 263, 263)
-                                .addComponent(jLabel1))
+                                .addComponent(lArticulos))
                             .addGroup(layout.createSequentialGroup()
                                 .addContainerGap()
                                 .addComponent(eDescripcionA))
@@ -125,7 +125,7 @@ public class pArticulos extends javax.swing.JPanel {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel1)
+                .addComponent(lArticulos)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eCodigoP)
@@ -173,7 +173,7 @@ public class pArticulos extends javax.swing.JPanel {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel lArticulos;
     private javax.swing.JTextField tCantidad;
     private javax.swing.JTextField tCodigoA;
     private javax.swing.JTextField tCodigoP;

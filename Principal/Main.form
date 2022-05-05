@@ -31,6 +31,7 @@
               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Component id="jLabel1" min="-2" pref="184" max="-2" attributes="0"/>
                   <Component id="bArticulos" pref="190" max="32767" attributes="0"/>
+                  <Component id="bProveedores" alignment="0" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="PanelPrincipal" max="32767" attributes="0"/>
@@ -48,7 +49,9 @@
                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="bArticulos" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="482" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="bProveedores" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="442" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -90,6 +93,11 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bArticulosActionPerformed"/>
       </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bProveedores">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Proveedores"/>
+      </Properties>
     </Component>
   </SubComponents>
 </Form>
