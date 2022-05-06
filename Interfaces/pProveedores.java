@@ -4,16 +4,25 @@
  */
 package Interfaces;
 
+import Clases.cArticulos;
+import Clases.cProveedores;
+import java.util.ArrayList;
+import java.util.Iterator;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Chefu
  */
-public class pProveedor extends javax.swing.JPanel {
+public class pProveedores extends javax.swing.JPanel {
 
     /**
      * Creates new form pProveedor
      */
-    public pProveedor() {
+    cProveedores ProveedorEncontrado = null;
+    ArrayList<cProveedores> ArregloP = new ArrayList<cProveedores>();
+
+    public pProveedores() {
         initComponents();
     }
 
@@ -56,19 +65,33 @@ public class pProveedor extends javax.swing.JPanel {
 
         eCelularP.setText("Celular de Proveedor:");
 
-        tNitP.addActionListener(new java.awt.event.ActionListener() {
+        bAgregarP.setText("Agregar");
+        bAgregarP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tNitPActionPerformed(evt);
+                bAgregarPActionPerformed(evt);
             }
         });
 
-        bAgregarP.setText("Agregar");
-
         bEliminarP.setText("Eliminar");
+        bEliminarP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEliminarPActionPerformed(evt);
+            }
+        });
 
         bBuscarP.setText("Buscar");
+        bBuscarP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBuscarPActionPerformed(evt);
+            }
+        });
 
         bModificarP.setText("Modificar");
+        bModificarP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bModificarPActionPerformed(evt);
+            }
+        });
 
         bReporteP.setText("Reporte");
 
@@ -90,21 +113,22 @@ public class pProveedor extends javax.swing.JPanel {
                     .addComponent(eNombreP)
                     .addComponent(eDireccionP)
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(bAgregarP)
                         .addComponent(eCelularP)
-                        .addComponent(bModificarP)))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bAgregarP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bModificarP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
+                            .addComponent(tCelularP)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addGap(0, 0, Short.MAX_VALUE)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(tCodigoP)
                                     .addComponent(tNitP)
-                                    .addComponent(tNombreP, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)))
-                            .addComponent(tDireccionP)
-                            .addComponent(tCelularP))
+                                    .addComponent(tNombreP, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+                                    .addComponent(tDireccionP))))
                         .addGap(19, 19, 19))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(121, 121, 121)
@@ -137,9 +161,9 @@ public class pProveedor extends javax.swing.JPanel {
                     .addComponent(eNombreP)
                     .addComponent(tNombreP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(eDireccionP)
-                    .addComponent(tDireccionP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tDireccionP, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eCelularP)
@@ -158,9 +182,61 @@ public class pProveedor extends javax.swing.JPanel {
         );
     }// </editor-fold>//GEN-END:initComponents
 
-    private void tNitPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tNitPActionPerformed
+    private void bAgregarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAgregarPActionPerformed
+        // TODO add your handling code here:        
+        cProveedores oProveedores = new cProveedores();
+        oProveedores.setCodigoProveedorP(tCodigoP.getText());
+        oProveedores.setNitProveedor(tNitP.getText());
+        oProveedores.setNombreProveedor(tNombreP.getText());
+        oProveedores.setDireccionProveedor(tDireccionP.getText());
+        oProveedores.setCelularProveedor(tCelularP.getText());
+
+        ArregloP.add(oProveedores);
+
+        setteo();
+
+    }//GEN-LAST:event_bAgregarPActionPerformed
+
+    private void bEliminarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarPActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tNitPActionPerformed
+
+        if (eliminarP(ProveedorEncontrado) && ProveedorEncontrado != null) {
+            JOptionPane.showMessageDialog(null, "Proveedor Eliminado Correctamente", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+            setteo();
+        } else {
+            JOptionPane.showMessageDialog(null, "Proveedor No Eliminado", "MENSAJE", JOptionPane.ERROR_MESSAGE);
+            setteo();
+        }
+
+
+    }//GEN-LAST:event_bEliminarPActionPerformed
+
+    private void bBuscarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarPActionPerformed
+        // TODO add your handling code here:
+        ProveedorEncontrado = buscarP(tCodigoP.getText());
+        if (ProveedorEncontrado != null) {
+            tCodigoP.setText(ProveedorEncontrado.getCodigoProveedorP());
+            tNitP.setText(ProveedorEncontrado.getNitProveedor());
+            tNombreP.setText(ProveedorEncontrado.getNombreProveedor());
+            tDireccionP.setText(ProveedorEncontrado.getDireccionProveedor());
+            tCelularP.setText(ProveedorEncontrado.getCelularProveedor());
+        } else {
+            setteo();
+            JOptionPane.showMessageDialog(null, "Proveedor no encontrado", "MENSAJE", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_bBuscarPActionPerformed
+
+    private void bModificarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bModificarPActionPerformed
+        // TODO add your handling code here:
+        if (modificarP(ProveedorEncontrado) && ProveedorEncontrado != null) {
+
+            JOptionPane.showMessageDialog(null, "Proveedor Modificado Correctamente", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+            setteo();
+        } else {
+            JOptionPane.showMessageDialog(null, "Proveedor No Modificado", "MENSAJE", JOptionPane.ERROR_MESSAGE);
+            setteo();
+        }
+    }//GEN-LAST:event_bModificarPActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -182,4 +258,67 @@ public class pProveedor extends javax.swing.JPanel {
     private javax.swing.JTextField tNitP;
     private javax.swing.JTextField tNombreP;
     // End of variables declaration//GEN-END:variables
+
+    private cProveedores buscarP(String CodigoP) {
+        Iterator<cProveedores> ITP = ArregloP.iterator();
+        cProveedores p = null;
+        while (ITP.hasNext()) {
+            cProveedores P = ITP.next();
+            if (P.getCodigoProveedorP().equals(CodigoP)) {
+                p = P;
+            }
+        }
+        return p;
+    }
+
+    private void setteo() {
+        tCodigoP.setText("");
+        tNitP.setText("");
+        tNombreP.setText("");
+        tDireccionP.setText("");
+        tCelularP.setText("");
+        tCodigoP.requestFocus(); //Solicita la colocacion del cursor en el campo de texto Nit
+    }
+
+    private boolean eliminarP(cProveedores e) {
+        boolean flag = false;
+        try {
+            Iterator<cProveedores> ITP = ArregloP.iterator();
+            while (ITP.hasNext()) {
+                cProveedores P = ITP.next();
+                if (P.getCodigoProveedorP().equals(e.getCodigoProveedorP())) {
+                    ITP.remove();
+                    flag = true;
+                }
+            }
+        } catch (Exception error) {
+            flag = false;
+            System.out.println("El Erro fue:" + error.getMessage());
+        }
+
+        return flag; //Flag es igual a true solo si lo removio dentro del void
+    }
+
+    private boolean modificarP(cProveedores m) {
+        boolean flag = false;
+        try {
+            Iterator<cProveedores> ITP = ArregloP.iterator();
+            while (ITP.hasNext()) {
+                cProveedores P = ITP.next();
+                if (P.getNitProveedor().equals(m.getNitProveedor())) {
+                    flag = true;
+                    P.setCodigoProveedorP(tCodigoP.getText());
+                    P.setNitProveedor(tNitP.getText());
+                    P.setNombreProveedor(tNombreP.getText());
+                    P.setDireccionProveedor(tDireccionP.getText());
+                    P.setCelularProveedor(tCelularP.getText());
+                }
+            }
+        } catch (Exception error) {
+            flag = false;
+            System.out.println("El Error fue:" + error.getMessage());
+        }
+
+        return flag; //Flag es igual a true solo si lo removio dentro del void
+    }
 }

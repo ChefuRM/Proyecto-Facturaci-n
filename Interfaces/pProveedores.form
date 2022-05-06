@@ -29,25 +29,27 @@
                   <Component id="eNombreP" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Component id="eDireccionP" alignment="0" min="-2" max="-2" attributes="0"/>
                   <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Component id="bAgregarP" min="-2" max="-2" attributes="0"/>
                       <Component id="eCelularP" min="-2" max="-2" attributes="0"/>
-                      <Component id="bModificarP" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
+                          <Component id="bAgregarP" alignment="1" max="32767" attributes="0"/>
+                          <Component id="bModificarP" alignment="1" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" attributes="0">
+                          <Component id="tCelularP" max="32767" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
                               <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
                                   <Component id="tCodigoP" max="32767" attributes="0"/>
                                   <Component id="tNitP" max="32767" attributes="0"/>
                                   <Component id="tNombreP" pref="421" max="32767" attributes="0"/>
+                                  <Component id="tDireccionP" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
-                          <Component id="tDireccionP" max="32767" attributes="0"/>
-                          <Component id="tCelularP" max="32767" attributes="0"/>
                       </Group>
                       <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
                   </Group>
@@ -92,9 +94,9 @@
                   <Component id="tNombreP" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="eDireccionP" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tDireccionP" alignment="3" min="-2" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="eDireccionP" min="-2" max="-2" attributes="0"/>
+                  <Component id="tDireccionP" min="-2" pref="22" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -152,9 +154,6 @@
     <Component class="javax.swing.JTextField" name="tCodigoP">
     </Component>
     <Component class="javax.swing.JTextField" name="tNitP">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tNitPActionPerformed"/>
-      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tNombreP">
     </Component>
@@ -166,21 +165,33 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Agregar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bAgregarPActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bEliminarP">
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bEliminarPActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bBuscarP">
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBuscarPActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bModificarP">
       <Properties>
         <Property name="text" type="java.lang.String" value="Modificar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bModificarPActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bReporteP">
       <Properties>

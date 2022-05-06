@@ -4,7 +4,7 @@
  */
 package Principal;
 
-import Interfaces.pArticulos;
+import Interfaces.*;
 import java.awt.BorderLayout;
 import javax.swing.JPanel;
 
@@ -34,6 +34,9 @@ public class Main extends javax.swing.JFrame {
         PanelPrincipal = new javax.swing.JPanel();
         bArticulos = new javax.swing.JButton();
         bProveedores = new javax.swing.JButton();
+        bEmpleados = new javax.swing.JButton();
+        bFacturas = new javax.swing.JButton();
+        bBinarios = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -62,6 +65,32 @@ public class Main extends javax.swing.JFrame {
         });
 
         bProveedores.setText("Proveedores");
+        bProveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bProveedoresActionPerformed(evt);
+            }
+        });
+
+        bEmpleados.setText("Empleados");
+        bEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEmpleadosActionPerformed(evt);
+            }
+        });
+
+        bFacturas.setText("Facturacion");
+        bFacturas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bFacturasActionPerformed(evt);
+            }
+        });
+
+        bBinarios.setText("Registros");
+        bBinarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBinariosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -69,10 +98,13 @@ public class Main extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(bArticulos, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
-                    .addComponent(bProveedores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 184, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bArticulos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
+                    .addComponent(bProveedores, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bEmpleados, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bFacturas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bBinarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -89,7 +121,13 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(bArticulos)
                         .addGap(18, 18, 18)
                         .addComponent(bProveedores)
-                        .addGap(0, 442, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(bEmpleados)
+                        .addGap(18, 18, 18)
+                        .addComponent(bFacturas)
+                        .addGap(18, 18, 18)
+                        .addComponent(bBinarios)
+                        .addGap(0, 322, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -100,6 +138,26 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         addpanel(new pArticulos());
     }//GEN-LAST:event_bArticulosActionPerformed
+
+    private void bProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bProveedoresActionPerformed
+        // TODO add your handling code here:
+        addpanel(new pProveedores());
+    }//GEN-LAST:event_bProveedoresActionPerformed
+
+    private void bEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEmpleadosActionPerformed
+        // TODO add your handling code here:
+        addpanel(new pEmpleados());
+    }//GEN-LAST:event_bEmpleadosActionPerformed
+
+    private void bFacturasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bFacturasActionPerformed
+        // TODO add your handling code here:
+        addpanel(new pFacturas());
+    }//GEN-LAST:event_bFacturasActionPerformed
+
+    private void bBinariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBinariosActionPerformed
+        // TODO add your handling code here:
+        addpanel(new pBinarios());
+    }//GEN-LAST:event_bBinariosActionPerformed
 
     /**
      * @param args the command line arguments
@@ -139,6 +197,9 @@ public class Main extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel PanelPrincipal;
     private javax.swing.JButton bArticulos;
+    private javax.swing.JButton bBinarios;
+    private javax.swing.JButton bEmpleados;
+    private javax.swing.JButton bFacturas;
     private javax.swing.JButton bProveedores;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
