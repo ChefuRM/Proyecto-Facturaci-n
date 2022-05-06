@@ -43,22 +43,24 @@
                               <Component id="bAgregarC" min="-2" pref="82" max="-2" attributes="0"/>
                           </Group>
                       </Group>
-                      <EmptySpace pref="150" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="bReporteC" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="bEliminarC" alignment="1" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="118" max="-2" attributes="0"/>
+                      <Component id="bEliminarC" min="-2" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="bBinarioC" min="-2" max="-2" attributes="0"/>
-                          <Component id="bBuscarC" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace max="32767" attributes="0"/>
+                              <Component id="bReporteC" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="1" attributes="0">
+                              <EmptySpace min="131" max="32767" attributes="0"/>
+                              <Component id="bBuscarC" min="-2" max="-2" attributes="0"/>
+                          </Group>
                       </Group>
                   </Group>
               </Group>
-              <EmptySpace pref="40" max="32767" attributes="0"/>
+              <EmptySpace pref="73" max="32767" attributes="0"/>
           </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="278" max="32767" attributes="0"/>
               <Component id="lProveedores" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="272" max="-2" attributes="0"/>
           </Group>
@@ -93,7 +95,6 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="bModificarC" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bReporteC" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="bBinarioC" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="268" max="32767" attributes="0"/>
           </Group>
@@ -112,6 +113,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Agregar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bAgregarCActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="eNitC">
       <Properties>
@@ -122,6 +126,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bEliminarCActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="eNombreC">
       <Properties>
@@ -132,6 +139,9 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBuscarCActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="eDireccionC">
       <Properties>
@@ -142,23 +152,21 @@
       <Properties>
         <Property name="text" type="java.lang.String" value="Modificar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bModificarCActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JButton" name="bReporteC">
       <Properties>
         <Property name="text" type="java.lang.String" value="Reporte"/>
       </Properties>
-    </Component>
-    <Component class="javax.swing.JButton" name="bBinarioC">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Binario"/>
-      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bReporteCActionPerformed"/>
+      </Events>
     </Component>
     <Component class="javax.swing.JTextField" name="tNitC">
     </Component>
     <Component class="javax.swing.JTextField" name="tNombreC">
-      <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="tNombreCActionPerformed"/>
-      </Events>
     </Component>
   </SubComponents>
 </Form>

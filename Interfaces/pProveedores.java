@@ -4,7 +4,6 @@
  */
 package Interfaces;
 
-import Clases.cArticulos;
 import Clases.cProveedores;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -17,8 +16,6 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -35,7 +32,7 @@ public class pProveedores extends javax.swing.JPanel {
 
     public pProveedores() {
         initComponents();
-        binario();
+        binariol();
     }
 
     /**
@@ -63,7 +60,6 @@ public class pProveedores extends javax.swing.JPanel {
         bBuscarP = new javax.swing.JButton();
         bModificarP = new javax.swing.JButton();
         bReporteP = new javax.swing.JButton();
-        bBinarioP = new javax.swing.JButton();
 
         lProveedores.setText("Proveedores");
 
@@ -112,8 +108,6 @@ public class pProveedores extends javax.swing.JPanel {
             }
         });
 
-        bBinarioP.setText("Binario");
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -125,36 +119,36 @@ public class pProveedores extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(eCodigoP)
-                    .addComponent(eNitP)
-                    .addComponent(eNombreP)
-                    .addComponent(eDireccionP)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(eCelularP)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(bAgregarP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(bModificarP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tCelularP)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
+                            .addComponent(eCodigoP)
+                            .addComponent(eNitP)
+                            .addComponent(eNombreP)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(33, 33, 33)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(tCodigoP)
-                                    .addComponent(tNitP)
-                                    .addComponent(tNombreP, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
-                                    .addComponent(tDireccionP))))
-                        .addGap(19, 19, 19))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(121, 121, 121)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(bAgregarP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(bModificarP, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                            .addComponent(eCelularP))
+                        .addGap(6, 6, 6))
+                    .addComponent(eDireccionP, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(18, 20, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(tDireccionP)
+                            .addComponent(tCodigoP, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tNitP, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tNombreP, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 421, Short.MAX_VALUE)
+                            .addComponent(tCelularP, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(18, 18, 18))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(bReporteP)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bBinarioP))
+                                .addComponent(bReporteP))
                             .addGroup(layout.createSequentialGroup()
+                                .addGap(121, 121, 121)
                                 .addComponent(bEliminarP)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 139, Short.MAX_VALUE)
                                 .addComponent(bBuscarP)))
@@ -178,13 +172,13 @@ public class pProveedores extends javax.swing.JPanel {
                     .addComponent(eNombreP)
                     .addComponent(tNombreP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eDireccionP)
-                    .addComponent(tDireccionP, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tDireccionP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(eCelularP)
-                    .addComponent(tCelularP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tCelularP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(eCelularP))
                 .addGap(48, 48, 48)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bAgregarP)
@@ -193,41 +187,39 @@ public class pProveedores extends javax.swing.JPanel {
                 .addGap(41, 41, 41)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bModificarP)
-                    .addComponent(bReporteP)
-                    .addComponent(bBinarioP))
+                    .addComponent(bReporteP))
                 .addContainerGap(183, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void bAgregarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAgregarPActionPerformed
         // TODO add your handling code here:        
-        cProveedores oProveedores = new cProveedores();
-        oProveedores.setCodigoProveedorP(tCodigoP.getText());
-        oProveedores.setNitProveedor(tNitP.getText());
-        oProveedores.setNombreProveedor(tNombreP.getText());
-        oProveedores.setDireccionProveedor(tDireccionP.getText());
-        oProveedores.setCelularProveedor(tCelularP.getText());
+        if (!buscarN(tNombreP.getText())) {
+            cProveedores oProveedores = new cProveedores();
+            oProveedores.setCodigoProveedorP(tCodigoP.getText());
+            oProveedores.setNitProveedor(tNitP.getText());
+            oProveedores.setNombreProveedor(tNombreP.getText());
+            oProveedores.setDireccionProveedor(tDireccionP.getText());
+            oProveedores.setCelularProveedor(tCelularP.getText());
 
-        ArregloP.add(oProveedores);
-
+            ArregloP.add(oProveedores);
+        } else {
+            JOptionPane.showMessageDialog(null, "Proveedor Existente", "MENSAJE", JOptionPane.ERROR_MESSAGE);
+        }
         setteo();
-        binario();
-
+        binarioa();
     }//GEN-LAST:event_bAgregarPActionPerformed
 
     private void bEliminarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarPActionPerformed
         // TODO add your handling code here:
-
         if (eliminarP(ProveedorEncontrado) && ProveedorEncontrado != null) {
             JOptionPane.showMessageDialog(null, "Proveedor Eliminado Correctamente", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
             setteo();
-            binario();
+            binarioa();
         } else {
             JOptionPane.showMessageDialog(null, "Proveedor No Eliminado", "MENSAJE", JOptionPane.ERROR_MESSAGE);
             setteo();
         }
-
-
     }//GEN-LAST:event_bEliminarPActionPerformed
 
     private void bBuscarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarPActionPerformed
@@ -251,7 +243,7 @@ public class pProveedores extends javax.swing.JPanel {
 
             JOptionPane.showMessageDialog(null, "Proveedor Modificado Correctamente", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
             setteo();
-            binario();
+            binarioa();
         } else {
             JOptionPane.showMessageDialog(null, "Proveedor No Modificado", "MENSAJE", JOptionPane.ERROR_MESSAGE);
             setteo();
@@ -266,7 +258,6 @@ public class pProveedores extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAgregarP;
-    private javax.swing.JButton bBinarioP;
     private javax.swing.JButton bBuscarP;
     private javax.swing.JButton bEliminarP;
     private javax.swing.JButton bModificarP;
@@ -313,6 +304,25 @@ public class pProveedores extends javax.swing.JPanel {
                 cProveedores P = ITP.next();
                 if (P.getCodigoProveedorP().equals(e.getCodigoProveedorP())) {
                     ITP.remove();
+                    flag = true;
+                }
+            }
+        } catch (Exception error) {
+            flag = false;
+            System.out.println("El Erro fue:" + error.getMessage());
+        }
+
+        return flag; //Flag es igual a true solo si lo removio dentro del void
+    }
+
+    private boolean buscarN(String e) {
+        boolean flag = false;
+        try {
+            Iterator<cProveedores> ITP = ArregloP.iterator();
+            while (ITP.hasNext()) {
+                cProveedores P = ITP.next();
+                if (P.getNombreProveedor().equals(e)) {
+
                     flag = true;
                 }
             }
@@ -437,7 +447,7 @@ public class pProveedores extends javax.swing.JPanel {
 
         try {
             //Se crea el fichero
-            fos = new FileOutputStream("prov.dat");
+            fos = new FileOutputStream("PROV.dat");
             ous = new ObjectOutputStream(fos);
 
             //Se escribe el objeto en el fichero

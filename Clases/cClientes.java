@@ -4,11 +4,13 @@
  */
 package Clases;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Chefu
  */
-public class cClientes {
+public class cClientes implements Serializable {
 
     public String getNitCliente() {
         return NitCliente;

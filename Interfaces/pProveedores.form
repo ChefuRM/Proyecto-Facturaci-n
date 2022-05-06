@@ -24,44 +24,44 @@
           <Group type="102" attributes="0">
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="eCodigoP" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="eNitP" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="eNombreP" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Component id="eDireccionP" alignment="0" min="-2" max="-2" attributes="0"/>
-                  <Group type="103" alignment="0" groupAlignment="1" attributes="0">
-                      <Component id="eCelularP" min="-2" max="-2" attributes="0"/>
-                      <Group type="103" alignment="1" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="bAgregarP" alignment="1" max="32767" attributes="0"/>
-                          <Component id="bModificarP" alignment="1" max="32767" attributes="0"/>
-                      </Group>
-                  </Group>
-              </Group>
-              <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Component id="tCelularP" max="32767" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                          <Component id="eCodigoP" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="eNitP" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="eNombreP" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="tCodigoP" max="32767" attributes="0"/>
-                                  <Component id="tNitP" max="32767" attributes="0"/>
-                                  <Component id="tNombreP" pref="421" max="32767" attributes="0"/>
-                                  <Component id="tDireccionP" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="bAgregarP" alignment="1" max="32767" attributes="0"/>
+                                  <Component id="bModificarP" alignment="1" max="32767" attributes="0"/>
                               </Group>
                           </Group>
+                          <Component id="eCelularP" alignment="0" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="6" max="-2" attributes="0"/>
                   </Group>
-                  <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" attributes="0">
+                  <Component id="eDireccionP" alignment="1" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace type="separate" pref="20" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                          <Component id="tDireccionP" max="32767" attributes="0"/>
+                          <Component id="tCodigoP" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tNitP" alignment="0" max="32767" attributes="0"/>
+                          <Component id="tNombreP" alignment="0" pref="421" max="32767" attributes="0"/>
+                          <Component id="tCelularP" alignment="0" max="32767" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="1" attributes="0">
                           <Group type="102" attributes="0">
-                              <Component id="bReporteP" min="-2" max="-2" attributes="0"/>
                               <EmptySpace max="32767" attributes="0"/>
-                              <Component id="bBinarioP" min="-2" max="-2" attributes="0"/>
+                              <Component id="bReporteP" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" attributes="0">
+                              <EmptySpace min="-2" pref="121" max="-2" attributes="0"/>
                               <Component id="bEliminarP" min="-2" max="-2" attributes="0"/>
                               <EmptySpace pref="139" max="32767" attributes="0"/>
                               <Component id="bBuscarP" min="-2" max="-2" attributes="0"/>
@@ -94,14 +94,14 @@
                   <Component id="tNombreP" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="eDireccionP" min="-2" max="-2" attributes="0"/>
-                  <Component id="tDireccionP" min="-2" pref="22" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="eDireccionP" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tDireccionP" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="eCelularP" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="tCelularP" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="eCelularP" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="48" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -113,7 +113,6 @@
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="bModificarP" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="bReporteP" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="bBinarioP" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="183" max="32767" attributes="0"/>
           </Group>
@@ -200,11 +199,6 @@
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bReportePActionPerformed"/>
       </Events>
-    </Component>
-    <Component class="javax.swing.JButton" name="bBinarioP">
-      <Properties>
-        <Property name="text" type="java.lang.String" value="Binario"/>
-      </Properties>
     </Component>
   </SubComponents>
 </Form>
