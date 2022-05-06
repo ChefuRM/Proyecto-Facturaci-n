@@ -6,8 +6,14 @@ package Interfaces;
 
 import Clases.cArticulos;
 import Clases.cProveedores;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
 /**
@@ -94,6 +100,11 @@ public class pProveedores extends javax.swing.JPanel {
         });
 
         bReporteP.setText("Reporte");
+        bReporteP.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bReportePActionPerformed(evt);
+            }
+        });
 
         bBinarioP.setText("Binario");
 
@@ -238,6 +249,11 @@ public class pProveedores extends javax.swing.JPanel {
         }
     }//GEN-LAST:event_bModificarPActionPerformed
 
+    private void bReportePActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bReportePActionPerformed
+        // TODO add your handling code here:
+        html();
+    }//GEN-LAST:event_bReportePActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAgregarP;
@@ -320,5 +336,59 @@ public class pProveedores extends javax.swing.JPanel {
         }
 
         return flag; //Flag es igual a true solo si lo removio dentro del void
+    }
+
+    private void html() {
+
+        BufferedWriter ficheroSalida;
+        try {
+            String rows = "";
+            Iterator<cProveedores> ITP = ArregloP.iterator();
+
+            ficheroSalida = new BufferedWriter(new FileWriter(new File("ReporteP.html")));
+            while (ITP.hasNext()) {
+                cProveedores P = ITP.next();
+                rows = rows + "            <tr>\n"
+                        + "                <td>" + P.getCodigoProveedorP() + "</td>\n"
+                        + "                <td>" + P.getNitProveedor() + "</td>\n"
+                        + "                <td>" + P.getNombreProveedor() + "</td>\n"
+                        + "                <td>" + P.getDireccionProveedor() + "</td>\n"
+                        + "                <td>" + P.getCelularProveedor() + "</td>\n"
+                        + "            </tr>";
+            }
+            ficheroSalida.write("<!DOCTYPE html>\n"
+                    + "<html lang=\"en\">\n"
+                    + "\n"
+                    + "<head>\n"
+                    + "    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\n"
+                    + "        integrity=\"sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3\" crossorigin=\"anonymous\">\n"
+                    + "    <meta charset=\"UTF-8\">\n"
+                    + "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n"
+                    + "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+                    + "    <title>Reportes</title>\n"
+                    + "</head>\n"
+                    + "\n"
+                    + "<body>\n"
+                    + "    <table class=\"w-100 table table-dark table-hover\">\n"
+                    + "        <thead>\n"
+                    + "            <tr>\n"
+                    + "                <th>Codigo</th>\n"
+                    + "                <th>Nit</th>\n"
+                    + "                <th>Nombre</th>\n"
+                    + "                <th>Direccion</th>\n"
+                    + "                <th>Celular</th>\n"
+                    + "            </tr>\n"
+                    + "        </thead>\n"
+                    + "        <tbody>\n"
+                    + rows
+                    + "        </tbody>\n"
+                    + "    </table>\n"
+                    + "</body>\n"
+                    + "\n"
+                    + "</html>");
+            ficheroSalida.close();
+        } catch (IOException error) {
+            System.out.println("El Error fue:" + error.getMessage());
+        }
     }
 }
