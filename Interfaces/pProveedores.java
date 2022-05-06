@@ -8,8 +8,13 @@ import Clases.cArticulos;
 import Clases.cProveedores;
 import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.logging.Level;
@@ -30,6 +35,7 @@ public class pProveedores extends javax.swing.JPanel {
 
     public pProveedores() {
         initComponents();
+        binario();
     }
 
     /**
@@ -205,6 +211,7 @@ public class pProveedores extends javax.swing.JPanel {
         ArregloP.add(oProveedores);
 
         setteo();
+        binario();
 
     }//GEN-LAST:event_bAgregarPActionPerformed
 
@@ -214,6 +221,7 @@ public class pProveedores extends javax.swing.JPanel {
         if (eliminarP(ProveedorEncontrado) && ProveedorEncontrado != null) {
             JOptionPane.showMessageDialog(null, "Proveedor Eliminado Correctamente", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
             setteo();
+            binario();
         } else {
             JOptionPane.showMessageDialog(null, "Proveedor No Eliminado", "MENSAJE", JOptionPane.ERROR_MESSAGE);
             setteo();
@@ -243,6 +251,7 @@ public class pProveedores extends javax.swing.JPanel {
 
             JOptionPane.showMessageDialog(null, "Proveedor Modificado Correctamente", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
             setteo();
+            binario();
         } else {
             JOptionPane.showMessageDialog(null, "Proveedor No Modificado", "MENSAJE", JOptionPane.ERROR_MESSAGE);
             setteo();
@@ -368,7 +377,7 @@ public class pProveedores extends javax.swing.JPanel {
                     + "    <title>Reportes</title>\n"
                     + "</head>\n"
                     + "\n"
-                    + "<body>\n"
+                    + "<body class=\"p-4\">\n"
                     + "    <table class=\"w-100 table table-dark table-hover\">\n"
                     + "        <thead>\n"
                     + "            <tr>\n"
@@ -391,4 +400,65 @@ public class pProveedores extends javax.swing.JPanel {
             System.out.println("El Error fue:" + error.getMessage());
         }
     }
+
+    public void binariol() {
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
+
+        try {
+
+            fis = new FileInputStream("PROV.dat");
+            ois = new ObjectInputStream(fis);
+            ArregloP = (ArrayList<cProveedores>) ois.readObject(); //es necesario el casting
+
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (fis != null) {
+                    fis.close();
+                }
+                if (ois != null) {
+                    ois.close();
+                }
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    private void binarioa() {
+        FileOutputStream fos = null;
+        ObjectOutputStream ous = null;
+
+        try {
+            //Se crea el fichero
+            fos = new FileOutputStream("prov.dat");
+            ous = new ObjectOutputStream(fos);
+
+            //Se escribe el objeto en el fichero
+            ous.writeObject(ArregloP);
+
+        } catch (FileNotFoundException e) {
+            System.out.println("1" + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("2" + e.getMessage());
+        } finally {
+            try {
+                if (fos != null) {
+                    fos.close();
+                }
+                if (ous != null) {
+                    ous.close();
+                }
+            } catch (IOException e) {
+                System.out.println("3" + e.getMessage());
+            }
+        }
+    }
+
 }
