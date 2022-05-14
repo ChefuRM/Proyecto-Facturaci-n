@@ -1,10 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package Interfaces;
 
-import Clases.cProveedores;
+import Clases.cProveedor;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -18,21 +14,21 @@ import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author Chefu
- */
 public class pProveedores extends javax.swing.JPanel {
 
     /**
      * Creates new form pProveedor
      */
-    cProveedores ProveedorEncontrado = null;
-    ArrayList<cProveedores> ArregloP = new ArrayList<cProveedores>();
+    cProveedor ProveedorEncontrado = null;
+
+    public static ArrayList<cProveedor> getArregloP() {
+        return ArregloP;
+    }
+    private static ArrayList<cProveedor> ArregloP = new ArrayList<cProveedor>();
 
     public pProveedores() {
         initComponents();
-        binariol();
+        leerbinario();
     }
 
     /**
@@ -195,19 +191,19 @@ public class pProveedores extends javax.swing.JPanel {
     private void bAgregarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAgregarPActionPerformed
         // TODO add your handling code here:        
         if (!buscarN(tNombreP.getText())) {
-            cProveedores oProveedores = new cProveedores();
+            cProveedor oProveedores = new cProveedor();
             oProveedores.setCodigoProveedorP(tCodigoP.getText());
             oProveedores.setNitProveedor(tNitP.getText());
             oProveedores.setNombreProveedor(tNombreP.getText());
             oProveedores.setDireccionProveedor(tDireccionP.getText());
             oProveedores.setCelularProveedor(tCelularP.getText());
-
+            JOptionPane.showMessageDialog(null, "Proveedor Agregado", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
             ArregloP.add(oProveedores);
         } else {
             JOptionPane.showMessageDialog(null, "Proveedor Existente", "MENSAJE", JOptionPane.ERROR_MESSAGE);
         }
         setteo();
-        binarioa();
+        crearbinario();
     }//GEN-LAST:event_bAgregarPActionPerformed
 
     private void bEliminarPActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarPActionPerformed
@@ -215,7 +211,7 @@ public class pProveedores extends javax.swing.JPanel {
         if (eliminarP(ProveedorEncontrado) && ProveedorEncontrado != null) {
             JOptionPane.showMessageDialog(null, "Proveedor Eliminado Correctamente", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
             setteo();
-            binarioa();
+            crearbinario();
         } else {
             JOptionPane.showMessageDialog(null, "Proveedor No Eliminado", "MENSAJE", JOptionPane.ERROR_MESSAGE);
             setteo();
@@ -243,7 +239,7 @@ public class pProveedores extends javax.swing.JPanel {
 
             JOptionPane.showMessageDialog(null, "Proveedor Modificado Correctamente", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
             setteo();
-            binarioa();
+            crearbinario();
         } else {
             JOptionPane.showMessageDialog(null, "Proveedor No Modificado", "MENSAJE", JOptionPane.ERROR_MESSAGE);
             setteo();
@@ -275,11 +271,11 @@ public class pProveedores extends javax.swing.JPanel {
     private javax.swing.JTextField tNombreP;
     // End of variables declaration//GEN-END:variables
 
-    private cProveedores buscarP(String CodigoP) {
-        Iterator<cProveedores> ITP = ArregloP.iterator();
-        cProveedores p = null;
+    private cProveedor buscarP(String CodigoP) {
+        Iterator<cProveedor> ITP = ArregloP.iterator();
+        cProveedor p = null;
         while (ITP.hasNext()) {
-            cProveedores P = ITP.next();
+            cProveedor P = ITP.next();
             if (P.getCodigoProveedorP().equals(CodigoP)) {
                 p = P;
             }
@@ -296,15 +292,16 @@ public class pProveedores extends javax.swing.JPanel {
         tCodigoP.requestFocus(); //Solicita la colocacion del cursor en el campo de texto Nit
     }
 
-    private boolean eliminarP(cProveedores e) {
+    private boolean eliminarP(cProveedor e) {
         boolean flag = false;
         try {
-            Iterator<cProveedores> ITP = ArregloP.iterator();
+            Iterator<cProveedor> ITP = ArregloP.iterator();
             while (ITP.hasNext()) {
-                cProveedores P = ITP.next();
+                cProveedor P = ITP.next();
                 if (P.getCodigoProveedorP().equals(e.getCodigoProveedorP())) {
                     ITP.remove();
                     flag = true;
+                    crearbinario();
                 }
             }
         } catch (Exception error) {
@@ -318,9 +315,9 @@ public class pProveedores extends javax.swing.JPanel {
     private boolean buscarN(String e) {
         boolean flag = false;
         try {
-            Iterator<cProveedores> ITP = ArregloP.iterator();
+            Iterator<cProveedor> ITP = ArregloP.iterator();
             while (ITP.hasNext()) {
-                cProveedores P = ITP.next();
+                cProveedor P = ITP.next();
                 if (P.getNombreProveedor().equals(e)) {
 
                     flag = true;
@@ -334,12 +331,12 @@ public class pProveedores extends javax.swing.JPanel {
         return flag; //Flag es igual a true solo si lo removio dentro del void
     }
 
-    private boolean modificarP(cProveedores m) {
+    private boolean modificarP(cProveedor m) {
         boolean flag = false;
         try {
-            Iterator<cProveedores> ITP = ArregloP.iterator();
+            Iterator<cProveedor> ITP = ArregloP.iterator();
             while (ITP.hasNext()) {
-                cProveedores P = ITP.next();
+                cProveedor P = ITP.next();
                 if (P.getNitProveedor().equals(m.getNitProveedor())) {
                     flag = true;
                     P.setCodigoProveedorP(tCodigoP.getText());
@@ -347,6 +344,7 @@ public class pProveedores extends javax.swing.JPanel {
                     P.setNombreProveedor(tNombreP.getText());
                     P.setDireccionProveedor(tDireccionP.getText());
                     P.setCelularProveedor(tCelularP.getText());
+                    crearbinario();
                 }
             }
         } catch (Exception error) {
@@ -362,11 +360,11 @@ public class pProveedores extends javax.swing.JPanel {
         BufferedWriter ficheroSalida;
         try {
             String rows = "";
-            Iterator<cProveedores> ITP = ArregloP.iterator();
+            Iterator<cProveedor> ITP = ArregloP.iterator();
 
             ficheroSalida = new BufferedWriter(new FileWriter(new File("ReporteP.html")));
             while (ITP.hasNext()) {
-                cProveedores P = ITP.next();
+                cProveedor P = ITP.next();
                 rows = rows + "            <tr>\n"
                         + "                <td>" + P.getCodigoProveedorP() + "</td>\n"
                         + "                <td>" + P.getNitProveedor() + "</td>\n"
@@ -411,15 +409,15 @@ public class pProveedores extends javax.swing.JPanel {
         }
     }
 
-    public void binariol() {
+    public static void leerbinario() {
         FileInputStream fis = null;
         ObjectInputStream ois = null;
 
         try {
 
-            fis = new FileInputStream("PROV.dat");
+            fis = new FileInputStream("bProveedores.dat");
             ois = new ObjectInputStream(fis);
-            ArregloP = (ArrayList<cProveedores>) ois.readObject(); //es necesario el casting
+            ArregloP = (ArrayList<cProveedor>) ois.readObject(); //es necesario el casting
 
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());
@@ -441,13 +439,13 @@ public class pProveedores extends javax.swing.JPanel {
         }
     }
 
-    private void binarioa() {
+    private void crearbinario() {
         FileOutputStream fos = null;
         ObjectOutputStream ous = null;
 
         try {
             //Se crea el fichero
-            fos = new FileOutputStream("PROV.dat");
+            fos = new FileOutputStream("bProveedores.dat");
             ous = new ObjectOutputStream(fos);
 
             //Se escribe el objeto en el fichero

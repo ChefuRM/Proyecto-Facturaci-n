@@ -4,11 +4,13 @@
  */
 package Clases;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Chefu
  */
-public class cEmpleados {
+public class cEmpleado implements Serializable {
 
     public String getCodigoEmpleado() {
         return CodigoEmpleado;

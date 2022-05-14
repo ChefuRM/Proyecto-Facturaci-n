@@ -1,8 +1,19 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package Interfaces;
+
+import Clases.cArticulo;
+import Clases.cProveedor;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -13,8 +24,21 @@ public class pArticulos extends javax.swing.JPanel {
     /**
      * Creates new form pClientes
      */
+    cArticulo ArticuloEncontrado = null;
+    cProveedor ProveedorEncontrado = null;
+
+    public static ArrayList<cArticulo> getArregloA() {
+        return ArregloA;
+    }
+
+    private static ArrayList<cArticulo> ArregloA = new ArrayList<cArticulo>();
+
     public pArticulos() {
+        pProveedores.leerbinario();
         initComponents();
+        leerBinarioAr();
+        cbProveedores.addItem("Seleccione Codigo de Proveedor");
+        setearCB();
     }
 
     /**
@@ -32,21 +56,21 @@ public class pArticulos extends javax.swing.JPanel {
         eDescripcionA = new javax.swing.JLabel();
         ePrecioU = new javax.swing.JLabel();
         eCantidad = new javax.swing.JLabel();
-        tCodigoP = new javax.swing.JTextField();
         tCodigoA = new javax.swing.JTextField();
         tDescripcionA = new javax.swing.JTextField();
         tPrecioU = new javax.swing.JTextField();
         tCantidad = new javax.swing.JTextField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        bAgregarA = new javax.swing.JButton();
+        bEliminarA = new javax.swing.JButton();
+        bModificarA = new javax.swing.JButton();
+        bBuscarA = new javax.swing.JButton();
+        bReporteA = new javax.swing.JButton();
+        cbProveedores = new javax.swing.JComboBox<>();
+        tCodigoPr = new javax.swing.JTextField();
 
         lArticulos.setText("Articulos");
 
-        eCodigoP.setText("Codigo de Proveedor:");
+        eCodigoP.setText("Codigos de Proveedores:");
 
         eCodigoA.setText("Codigo de Articulo:");
 
@@ -56,17 +80,46 @@ public class pArticulos extends javax.swing.JPanel {
 
         eCantidad.setText("Cantidad:");
 
-        jButton1.setText("Agregar");
+        bAgregarA.setText("Agregar");
+        bAgregarA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAgregarAActionPerformed(evt);
+            }
+        });
 
-        jButton2.setText("Eliminar");
+        bEliminarA.setText("Eliminar");
+        bEliminarA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEliminarAActionPerformed(evt);
+            }
+        });
 
-        jButton3.setText("Modificar");
+        bModificarA.setText("Modificar");
+        bModificarA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bModificarAActionPerformed(evt);
+            }
+        });
 
-        jButton4.setText("Buscar");
+        bBuscarA.setText("Buscar");
+        bBuscarA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBuscarAActionPerformed(evt);
+            }
+        });
 
-        jButton5.setText("Reporte");
+        bReporteA.setText("Reporte");
+        bReporteA.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bReporteAActionPerformed(evt);
+            }
+        });
 
-        jButton6.setText("Binario");
+        cbProveedores.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbProveedoresItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -102,23 +155,23 @@ public class pArticulos extends javax.swing.JPanel {
                                     .addComponent(tCantidad)))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton1)
+                                    .addComponent(bAgregarA)
                                     .addComponent(eCodigoP)
-                                    .addComponent(jButton4))
+                                    .addComponent(bBuscarA))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(38, 38, 38)
-                                        .addComponent(tCodigoP))
-                                    .addGroup(layout.createSequentialGroup()
                                         .addGap(124, 124, 124)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jButton5)
-                                            .addComponent(jButton2))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 143, Short.MAX_VALUE)
+                                        .addComponent(bEliminarA)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(43, 43, 43)))))))
+                                            .addComponent(bReporteA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                            .addComponent(bModificarA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                        .addGap(43, 43, 43))
+                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                        .addGap(22, 22, 22)
+                                        .addComponent(tCodigoPr)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addComponent(cbProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -129,7 +182,8 @@ public class pArticulos extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eCodigoP)
-                    .addComponent(tCodigoP, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tCodigoPr, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eCodigoA)
@@ -148,36 +202,325 @@ public class pArticulos extends javax.swing.JPanel {
                     .addComponent(tCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
-                    .addComponent(jButton3))
+                    .addComponent(bAgregarA)
+                    .addComponent(bEliminarA)
+                    .addComponent(bModificarA))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton4)
-                    .addComponent(jButton5)
-                    .addComponent(jButton6))
+                    .addComponent(bBuscarA)
+                    .addComponent(bReporteA))
                 .addContainerGap(230, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bAgregarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAgregarAActionPerformed
+        // TODO add your handling code here:
+        if (!buscarAr(tCodigoA.getText())) {
+            cArticulo oArticulos = new cArticulo();
+            oArticulos.setCodigoProveedor(ProveedorEncontrado);
+            oArticulos.setCodigoArticulo(tCodigoA.getText());
+            oArticulos.setDescripcionA(tDescripcionA.getText());
+            oArticulos.setPrecioUnit(tPrecioU.getText());
+            oArticulos.setCantidad(tCantidad.getText());
+            JOptionPane.showMessageDialog(null, "Articulo Agregado", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+            ArregloA.add(oArticulos);
+        } else {
+            JOptionPane.showMessageDialog(null, "Articulo Existente", "MENSAJE", JOptionPane.ERROR_MESSAGE);
+        }
+        limpiarCampos();
+        crearBinario();
+    }//GEN-LAST:event_bAgregarAActionPerformed
+
+    private void bEliminarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarAActionPerformed
+        // TODO add your handling code here:
+        if (eliminarA(ArticuloEncontrado) && ArticuloEncontrado != null) {
+            JOptionPane.showMessageDialog(null, "Articulo Eliminado Correctamente", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCampos();
+            crearBinario();
+        } else {
+            JOptionPane.showMessageDialog(null, "Articulo No Eliminado", "MENSAJE", JOptionPane.ERROR_MESSAGE);
+            limpiarCampos();
+        }
+    }//GEN-LAST:event_bEliminarAActionPerformed
+
+    private void bModificarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bModificarAActionPerformed
+        // TODO add your handling code here:
+        if (modificarA(ArticuloEncontrado) && ArticuloEncontrado != null) {
+
+            JOptionPane.showMessageDialog(null, "Articulo Modificado Correctamente", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCampos();
+            crearBinario();
+        } else {
+            JOptionPane.showMessageDialog(null, "Articulos No Modificado", "MENSAJE", JOptionPane.ERROR_MESSAGE);
+            limpiarCampos();
+        }
+    }//GEN-LAST:event_bModificarAActionPerformed
+
+    private void bBuscarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarAActionPerformed
+        // TODO add your handling code here:
+        ArticuloEncontrado = buscarA(tCodigoA.getText());
+        if (ArticuloEncontrado != null) {
+            tCodigoPr.setText(ArticuloEncontrado.getCodigoProveedor().getCodigoProveedorP());
+            tCodigoA.setText(ArticuloEncontrado.getCodigoArticulo());
+            tDescripcionA.setText(ArticuloEncontrado.getDescripcionA());
+            tPrecioU.setText(ArticuloEncontrado.getPrecioUnit());
+            tCantidad.setText(ArticuloEncontrado.getCantidad());
+        } else {
+            limpiarCampos();
+            JOptionPane.showMessageDialog(null, "Articulo no encontrado", "MENSAJE", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_bBuscarAActionPerformed
+
+    private void bReporteAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bReporteAActionPerformed
+        // TODO add your handling code here:
+        html();
+    }//GEN-LAST:event_bReporteAActionPerformed
+
+    private void cbProveedoresItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbProveedoresItemStateChanged
+        // TODO add your handling code here:
+        tCodigoPr.setText(cbProveedores.getSelectedItem().toString());
+        ProveedorEncontrado = buscarP(tCodigoPr.getText());
+    }//GEN-LAST:event_cbProveedoresItemStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bAgregarA;
+    private javax.swing.JButton bBuscarA;
+    private javax.swing.JButton bEliminarA;
+    private javax.swing.JButton bModificarA;
+    private javax.swing.JButton bReporteA;
+    private javax.swing.JComboBox<String> cbProveedores;
     private javax.swing.JLabel eCantidad;
     private javax.swing.JLabel eCodigoA;
     private javax.swing.JLabel eCodigoP;
     private javax.swing.JLabel eDescripcionA;
     private javax.swing.JLabel ePrecioU;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel lArticulos;
     private javax.swing.JTextField tCantidad;
     private javax.swing.JTextField tCodigoA;
-    private javax.swing.JTextField tCodigoP;
+    private javax.swing.JTextField tCodigoPr;
     private javax.swing.JTextField tDescripcionA;
     private javax.swing.JTextField tPrecioU;
     // End of variables declaration//GEN-END:variables
+
+    private void setearCB() {
+        Iterator<cProveedor> ITH = pProveedores.getArregloP().iterator();
+        while (ITH.hasNext()) {
+            cProveedor gProveedor = ITH.next();
+            cbProveedores.addItem(gProveedor.getCodigoProveedorP());
+        }
+
+    }
+
+    private void limpiarCampos() {
+        tCodigoPr.setText("");
+        tCodigoA.setText("");
+        tDescripcionA.setText("");
+        tPrecioU.setText("");
+        tCantidad.setText("");
+        cbProveedores.setSelectedIndex(0);
+    }
+
+    private boolean buscarAr(String e) {
+        boolean flag = false;
+        try {
+            Iterator<cArticulo> ITP = ArregloA.iterator();
+            while (ITP.hasNext()) {
+                cArticulo P = ITP.next();
+                if (P.getCodigoArticulo().equals(e)) {
+
+                    flag = true;
+                }
+            }
+        } catch (Exception error) {
+            flag = false;
+            System.out.println("El Erro fue:" + error.getMessage());
+        }
+
+        return flag; //Flag es igual a true solo si lo removio dentro del void
+    }
+
+    private cArticulo buscarA(String CodigoA) {
+        Iterator<cArticulo> ITP = ArregloA.iterator();
+        cArticulo p = null;
+        ArticuloEncontrado = null;
+        while (ITP.hasNext()) {
+            cArticulo P = ITP.next();
+            if (P.getCodigoArticulo().equals(CodigoA)) {
+                p = P;
+            }
+        }
+        return p;
+    }
+
+    private cProveedor buscarP(String CodigoP) {
+        Iterator<cProveedor> ITP = pProveedores.getArregloP().iterator();
+        cProveedor p = null;
+        ProveedorEncontrado = null;
+        while (ITP.hasNext()) {
+            cProveedor P = ITP.next();
+            if (P.getCodigoProveedorP().equals(CodigoP)) {
+                p = P;
+            }
+        }
+        return p;
+    }
+
+    private boolean eliminarA(cArticulo a) {
+        boolean flag = false;
+        try {
+            Iterator<cArticulo> ITP = ArregloA.iterator();
+            while (ITP.hasNext()) {
+                cArticulo P = ITP.next();
+                if (P.getCodigoArticulo().equals(a.getCodigoArticulo())) {
+                    ITP.remove();
+                    flag = true;
+                    crearBinario();
+                }
+            }
+        } catch (Exception error) {
+            flag = false;
+            System.out.println("El Erro fue:" + error.getMessage());
+        }
+
+        return flag; //Flag es igual a true solo si lo removio dentro del void
+    }
+
+    private boolean modificarA(cArticulo m) {
+        boolean flag = false;
+        try {
+            Iterator<cArticulo> ITP = ArregloA.iterator();
+            while (ITP.hasNext()) {
+                cArticulo P = ITP.next();
+                if (P.getCodigoArticulo().equals(m.getCodigoArticulo())) {
+                    flag = true;
+                    P.setCodigoProveedor(ProveedorEncontrado);
+                    P.setCodigoArticulo(tCodigoA.getText());
+                    P.setDescripcionA(tDescripcionA.getText());
+                    P.setPrecioUnit(tPrecioU.getText());
+                    P.setCantidad(tCantidad.getText());
+                    crearBinario();
+                }
+            }
+        } catch (Exception error) {
+            flag = false;
+            System.out.println("El Error fue:" + error.getMessage());
+        }
+
+        return flag; //Flag es igual a true solo si lo removio dentro del void
+    }
+
+    private void html() {
+
+        BufferedWriter ficheroSalida;
+        try {
+            String rows = "";
+            Iterator<cArticulo> ITP = ArregloA.iterator();
+
+            ficheroSalida = new BufferedWriter(new FileWriter(new File("ReporteA.html")));
+            while (ITP.hasNext()) {
+                cArticulo P = ITP.next();
+                rows = rows + "            <tr>\n"
+                        + "                <td>" + P.getCodigoProveedor().getCodigoProveedorP() + "</td>\n"
+                        + "                <td>" + P.getCodigoArticulo() + "</td>\n"
+                        + "                <td>" + P.getDescripcionA() + "</td>\n"
+                        + "                <td>" + P.getPrecioUnit() + "</td>\n"
+                        + "                <td>" + P.getCantidad() + "</td>\n"
+                        + "            </tr>";
+            }
+            ficheroSalida.write("<!DOCTYPE html>\n"
+                    + "<html lang=\"en\">\n"
+                    + "\n"
+                    + "<head>\n"
+                    + "    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\n"
+                    + "        integrity=\"sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3\" crossorigin=\"anonymous\">\n"
+                    + "    <meta charset=\"UTF-8\">\n"
+                    + "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n"
+                    + "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+                    + "    <title>Reportes</title>\n"
+                    + "</head>\n"
+                    + "\n"
+                    + "<body class=\"p-4\">\n"
+                    + "    <table class=\"w-100 table table-dark table-hover\">\n"
+                    + "        <thead>\n"
+                    + "            <tr>\n"
+                    + "                <th>Codigo de Proveedor</th>\n"
+                    + "                <th>Codigo de Articulo</th>\n"
+                    + "                <th>Descripcion</th>\n"
+                    + "                <th>Precio Unitario</th>\n"
+                    + "                <th>Cantidad</th>\n"
+                    + "            </tr>\n"
+                    + "        </thead>\n"
+                    + "        <tbody>\n"
+                    + rows
+                    + "        </tbody>\n"
+                    + "    </table>\n"
+                    + "</body>\n"
+                    + "\n"
+                    + "</html>");
+            ficheroSalida.close();
+        } catch (IOException error) {
+            System.out.println("El Error fue:" + error.getMessage());
+        }
+    }
+
+    private void leerBinarioAr() {
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
+
+        try {
+
+            fis = new FileInputStream("bArticulos.dat");
+            ois = new ObjectInputStream(fis);
+            ArregloA = (ArrayList<cArticulo>) ois.readObject(); //es necesario el casting
+
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (fis != null) {
+                    fis.close();
+                }
+                if (ois != null) {
+                    ois.close();
+                }
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    private void crearBinario() {
+        FileOutputStream fos = null;
+        ObjectOutputStream ous = null;
+
+        try {
+            //Se crea el fichero
+            fos = new FileOutputStream("bArticulos.dat");
+            ous = new ObjectOutputStream(fos);
+
+            //Se escribe el objeto en el fichero
+            ous.writeObject(ArregloA);
+
+        } catch (FileNotFoundException e) {
+            System.out.println("1" + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("2" + e.getMessage());
+        } finally {
+            try {
+                if (fos != null) {
+                    fos.close();
+                }
+                if (ous != null) {
+                    ous.close();
+                }
+            } catch (IOException e) {
+                System.out.println("3" + e.getMessage());
+            }
+        }
+    }
 }

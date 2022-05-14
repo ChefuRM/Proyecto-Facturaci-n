@@ -54,27 +54,26 @@
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
                               <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="bAgregarA" min="-2" max="-2" attributes="0"/>
                                   <Component id="eCodigoP" min="-2" max="-2" attributes="0"/>
-                                  <Component id="jButton4" alignment="1" min="-2" max="-2" attributes="0"/>
+                                  <Component id="bBuscarA" alignment="1" min="-2" max="-2" attributes="0"/>
                               </Group>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Group type="102" alignment="0" attributes="0">
-                                      <EmptySpace min="-2" pref="38" max="-2" attributes="0"/>
-                                      <Component id="tCodigoP" max="32767" attributes="0"/>
-                                  </Group>
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
                                       <EmptySpace min="-2" pref="124" max="-2" attributes="0"/>
-                                      <Group type="103" groupAlignment="1" attributes="0">
-                                          <Component id="jButton5" min="-2" max="-2" attributes="0"/>
-                                          <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <EmptySpace pref="143" max="32767" attributes="0"/>
+                                      <Component id="bEliminarA" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace pref="127" max="32767" attributes="0"/>
                                       <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                          <Component id="jButton3" max="32767" attributes="0"/>
-                                          <Component id="jButton6" max="32767" attributes="0"/>
+                                          <Component id="bReporteA" max="32767" attributes="0"/>
+                                          <Component id="bModificarA" max="32767" attributes="0"/>
                                       </Group>
                                       <EmptySpace min="-2" pref="43" max="-2" attributes="0"/>
+                                  </Group>
+                                  <Group type="102" alignment="1" attributes="0">
+                                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                                      <Component id="tCodigoPr" max="32767" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Component id="cbProveedores" min="-2" max="-2" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -93,7 +92,8 @@
               <EmptySpace max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="eCodigoP" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="tCodigoP" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="cbProveedores" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="tCodigoPr" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -117,15 +117,14 @@
               </Group>
               <EmptySpace min="-2" pref="36" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton3" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bAgregarA" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bEliminarA" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bModificarA" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jButton4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton5" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton6" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bBuscarA" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="bReporteA" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace pref="230" max="32767" attributes="0"/>
           </Group>
@@ -140,7 +139,7 @@
     </Component>
     <Component class="javax.swing.JLabel" name="eCodigoP">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Codigo de Proveedor:"/>
+        <Property name="text" type="java.lang.String" value="Codigos de Proveedores:"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JLabel" name="eCodigoA">
@@ -163,8 +162,6 @@
         <Property name="text" type="java.lang.String" value="Cantidad:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="tCodigoP">
-    </Component>
     <Component class="javax.swing.JTextField" name="tCodigoA">
     </Component>
     <Component class="javax.swing.JTextField" name="tDescripcionA">
@@ -173,35 +170,60 @@
     </Component>
     <Component class="javax.swing.JTextField" name="tCantidad">
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="bAgregarA">
       <Properties>
         <Property name="text" type="java.lang.String" value="Agregar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bAgregarAActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="bEliminarA">
       <Properties>
         <Property name="text" type="java.lang.String" value="Eliminar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bEliminarAActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton3">
+    <Component class="javax.swing.JButton" name="bModificarA">
       <Properties>
         <Property name="text" type="java.lang.String" value="Modificar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bModificarAActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton4">
+    <Component class="javax.swing.JButton" name="bBuscarA">
       <Properties>
         <Property name="text" type="java.lang.String" value="Buscar"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bBuscarAActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton5">
+    <Component class="javax.swing.JButton" name="bReporteA">
       <Properties>
         <Property name="text" type="java.lang.String" value="Reporte"/>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bReporteAActionPerformed"/>
+      </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton6">
+    <Component class="javax.swing.JComboBox" name="cbProveedores">
       <Properties>
-        <Property name="text" type="java.lang.String" value="Binario"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="0"/>
+        </Property>
       </Properties>
+      <Events>
+        <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="cbProveedoresItemStateChanged"/>
+      </Events>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+      </AuxValues>
+    </Component>
+    <Component class="javax.swing.JTextField" name="tCodigoPr">
     </Component>
   </SubComponents>
 </Form>

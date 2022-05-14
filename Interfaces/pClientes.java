@@ -4,7 +4,7 @@
  */
 package Interfaces;
 
-import Clases.cClientes;
+import Clases.cCliente;
 import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,8 +27,8 @@ public class pClientes extends javax.swing.JPanel {
     /**
      * Creates new form pClientes
      */
-    cClientes ClienteEncontrado = null;
-    ArrayList<cClientes> ArregloC = new ArrayList<cClientes>();
+    cCliente ClienteEncontrado = null;
+    ArrayList<cCliente> ArregloC = new ArrayList<cCliente>();
 
     public pClientes() {
         initComponents();
@@ -107,72 +107,63 @@ public class pClientes extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(eNitC)
                             .addComponent(eNombreC)
-                            .addComponent(eDireccionC))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(tDireccionC, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 386, Short.MAX_VALUE)
-                            .addComponent(tNombreC, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(eNitC))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(tNombreC, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
                             .addComponent(tNitC)))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(55, 55, 55)
-                                .addComponent(bModificarC))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(bAgregarC, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(118, 118, 118)
-                        .addComponent(bEliminarC)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bReporteC))
-                            .addGroup(layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bBuscarC)))))
-                .addContainerGap(73, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 278, Short.MAX_VALUE)
-                .addComponent(lProveedores)
-                .addGap(272, 272, 272))
+                    .addComponent(lProveedores)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addComponent(eDireccionC)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(tDireccionC))
+                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
+                            .addContainerGap()
+                            .addComponent(bAgregarC)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(bBuscarC)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(bEliminarC)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(bModificarC)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                            .addComponent(bReporteC))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(lProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eNitC)
                     .addComponent(tNitC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eNombreC)
                     .addComponent(tNombreC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eDireccionC)
                     .addComponent(tDireccionC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(43, 43, 43)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bAgregarC)
+                    .addComponent(bBuscarC)
                     .addComponent(bEliminarC)
-                    .addComponent(bBuscarC))
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bModificarC)
                     .addComponent(bReporteC))
-                .addContainerGap(268, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void bAgregarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAgregarCActionPerformed
         // TODO add your handling code here:
         if (!buscarN(tNitC.getText())) {
-            cClientes oClientes = new cClientes();
+            cCliente oClientes = new cCliente();
             oClientes.setNitCliente(tNitC.getText());
             oClientes.setNombreCliente(tNombreC.getText());
             oClientes.setDireccionCliente(tDireccionC.getText());
@@ -243,11 +234,11 @@ public class pClientes extends javax.swing.JPanel {
     private javax.swing.JTextField tNitC;
     private javax.swing.JTextField tNombreC;
     // End of variables declaration//GEN-END:variables
- private cClientes buscarC(String NitC) {
-        Iterator<cClientes> ITC = ArregloC.iterator();
-        cClientes c = null;
+ private cCliente buscarC(String NitC) {
+        Iterator<cCliente> ITC = ArregloC.iterator();
+        cCliente c = null;
         while (ITC.hasNext()) {
-            cClientes C = ITC.next();
+            cCliente C = ITC.next();
             if (C.getNitCliente().equals(NitC)) {
                 c = C;
             }
@@ -263,12 +254,12 @@ public class pClientes extends javax.swing.JPanel {
         tNitC.requestFocus(); //Solicita la colocacion del cursor en el campo de texto Nit
     }
 
-    private boolean eliminarC(cClientes e) {
+    private boolean eliminarC(cCliente e) {
         boolean flag = false;
         try {
-            Iterator<cClientes> ITC = ArregloC.iterator();
+            Iterator<cCliente> ITC = ArregloC.iterator();
             while (ITC.hasNext()) {
-                cClientes C = ITC.next();
+                cCliente C = ITC.next();
                 if (C.getNitCliente().equals(e.getNitCliente())) {
                     ITC.remove();
                     flag = true;
@@ -285,9 +276,9 @@ public class pClientes extends javax.swing.JPanel {
     private boolean buscarN(String e) {
         boolean flag = false;
         try {
-            Iterator<cClientes> ITC = ArregloC.iterator();
+            Iterator<cCliente> ITC = ArregloC.iterator();
             while (ITC.hasNext()) {
-                cClientes C = ITC.next();
+                cCliente C = ITC.next();
                 if (C.getNitCliente().equals(e)) {
 
                     flag = true;
@@ -301,12 +292,12 @@ public class pClientes extends javax.swing.JPanel {
         return flag; //Flag es igual a true solo si lo removio dentro del void
     }
 
-    private boolean modificarC(cClientes m) {
+    private boolean modificarC(cCliente m) {
         boolean flag = false;
         try {
-            Iterator<cClientes> ITC = ArregloC.iterator();
+            Iterator<cCliente> ITC = ArregloC.iterator();
             while (ITC.hasNext()) {
-                cClientes C = ITC.next();
+                cCliente C = ITC.next();
                 if (C.getNitCliente().equals(m.getNitCliente())) {
                     flag = true;
                     C.setNitCliente(tNitC.getText());
@@ -327,11 +318,11 @@ public class pClientes extends javax.swing.JPanel {
         BufferedWriter ficheroSalida;
         try {
             String rows = "";
-            Iterator<cClientes> ITC = ArregloC.iterator();
+            Iterator<cCliente> ITC = ArregloC.iterator();
 
             ficheroSalida = new BufferedWriter(new FileWriter(new File("ReporteC.html")));
             while (ITC.hasNext()) {
-                cClientes C = ITC.next();
+                cCliente C = ITC.next();
                 rows = rows + "            <tr>\n"
                         + "                <td>" + C.getNitCliente()+ "</td>\n"
                         + "                <td>" + C.getNombreCliente()+ "</td>\n"
@@ -380,7 +371,7 @@ public class pClientes extends javax.swing.JPanel {
 
             fis = new FileInputStream("CLIE.dat");
             ois = new ObjectInputStream(fis);
-            ArregloC = (ArrayList<cClientes>) ois.readObject(); //es necesario el casting
+            ArregloC = (ArrayList<cCliente>) ois.readObject(); //es necesario el casting
 
         } catch (FileNotFoundException e) {
             System.out.println(e.getMessage());

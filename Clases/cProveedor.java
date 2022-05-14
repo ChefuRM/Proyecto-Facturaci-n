@@ -10,7 +10,7 @@ import java.io.Serializable;
  *
  * @author Chefu
  */
-public class cProveedores implements Serializable {
+public class cProveedor implements Serializable {
 
     public String getCodigoProveedorP() {
         return CodigoProveedorP;

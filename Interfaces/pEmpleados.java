@@ -1,20 +1,35 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JPanel.java to edit this template
- */
 package Interfaces;
 
-/**
- *
- * @author Chefu
- */
+import Clases.cEmpleado;
+import java.io.BufferedWriter;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.util.ArrayList;
+import java.util.Iterator;
+import javax.swing.JOptionPane;
+
 public class pEmpleados extends javax.swing.JPanel {
 
     /**
      * Creates new form pEmpleados
      */
+    cEmpleado EmpleadoEncontrado = null;
+
+    public static ArrayList<cEmpleado> getArregloE() {
+        return ArregloE;
+    }
+
+    private static ArrayList<cEmpleado> ArregloE = new ArrayList<cEmpleado>();
+
     public pEmpleados() {
         initComponents();
+        leerbinario();
     }
 
     /**
@@ -40,7 +55,6 @@ public class pEmpleados extends javax.swing.JPanel {
         bBuscarE = new javax.swing.JButton();
         bModificarE = new javax.swing.JButton();
         bReporteE = new javax.swing.JButton();
-        bBinarioE = new javax.swing.JButton();
 
         eTitulo.setText("Empleados");
 
@@ -53,16 +67,39 @@ public class pEmpleados extends javax.swing.JPanel {
         jLabel4.setText("Salario de Empleado:");
 
         bAgregarE.setText("Agregar");
+        bAgregarE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bAgregarEActionPerformed(evt);
+            }
+        });
 
         bEliminarE.setText("Eliminar");
+        bEliminarE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEliminarEActionPerformed(evt);
+            }
+        });
 
         bBuscarE.setText("Buscar");
+        bBuscarE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bBuscarEActionPerformed(evt);
+            }
+        });
 
         bModificarE.setText("Modificar");
+        bModificarE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bModificarEActionPerformed(evt);
+            }
+        });
 
         bReporteE.setText("Reporte");
-
-        bBinarioE.setText("Binario");
+        bReporteE.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bReporteEActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -88,18 +125,18 @@ public class pEmpleados extends javax.swing.JPanel {
                             .addComponent(tSalarioE)))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(26, 26, 26)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(bAgregarE)
-                            .addComponent(bModificarE))
-                        .addGap(132, 132, 132)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bAgregarE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bModificarE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(144, 144, 144)
+                        .addComponent(bEliminarE)
+                        .addGap(154, 154, 154)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(bReporteE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(bBinarioE))
+                                .addComponent(bReporteE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(bEliminarE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 166, Short.MAX_VALUE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(bBuscarE)))))
                 .addContainerGap(42, Short.MAX_VALUE))
         );
@@ -132,16 +169,75 @@ public class pEmpleados extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 66, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bReporteE)
-                    .addComponent(bBinarioE)
                     .addComponent(bModificarE))
                 .addGap(203, 203, 203))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void bAgregarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAgregarEActionPerformed
+        // TODO add your handling code here:
+        if (!buscarC(tNombreE.getText())) {
+            cEmpleado oEmpleados = new cEmpleado();
+            oEmpleados.setCodigoEmpleado(tCodigoE.getText());
+            oEmpleados.setNombreEmpleado(tNombreE.getText());
+            oEmpleados.setPuestoEmpleado(tPuestoE.getText());
+            oEmpleados.setSalarioEmpleado(tSalarioE.getText());
+            JOptionPane.showMessageDialog(null, "Empleado Agregado", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+            ArregloE.add(oEmpleados);
+        } else {
+            JOptionPane.showMessageDialog(null, "Empleado Existente", "MENSAJE", JOptionPane.ERROR_MESSAGE);
+        }
+        limpiarCampos();
+        crearbinario();
+    }//GEN-LAST:event_bAgregarEActionPerformed
+
+    private void bEliminarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarEActionPerformed
+        // TODO add your handling code here:
+        if (eliminarE(EmpleadoEncontrado) && EmpleadoEncontrado != null) {
+            JOptionPane.showMessageDialog(null, "Proveedor Eliminado Correctamente", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCampos();
+            crearbinario();
+        } else {
+            JOptionPane.showMessageDialog(null, "Proveedor No Eliminado", "MENSAJE", JOptionPane.ERROR_MESSAGE);
+            limpiarCampos();
+        }
+    }//GEN-LAST:event_bEliminarEActionPerformed
+
+    private void bBuscarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bBuscarEActionPerformed
+        // TODO add your handling code here:
+        EmpleadoEncontrado = buscarE(tCodigoE.getText());
+        if (EmpleadoEncontrado != null) {
+            tCodigoE.setText(EmpleadoEncontrado.getCodigoEmpleado());
+            tNombreE.setText(EmpleadoEncontrado.getNombreEmpleado());
+            tPuestoE.setText(EmpleadoEncontrado.getPuestoEmpleado());
+            tSalarioE.setText(EmpleadoEncontrado.getSalarioEmpleado());
+        } else {
+            limpiarCampos();
+            JOptionPane.showMessageDialog(null, "Empleado no encontrado", "MENSAJE", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_bBuscarEActionPerformed
+
+    private void bModificarEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bModificarEActionPerformed
+        // TODO add your handling code here:
+        if (modificarE(EmpleadoEncontrado) && EmpleadoEncontrado != null) {
+
+            JOptionPane.showMessageDialog(null, "Proveedor Modificado Correctamente", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+            limpiarCampos();
+            crearbinario();
+        } else {
+            JOptionPane.showMessageDialog(null, "Proveedor No Modificado", "MENSAJE", JOptionPane.ERROR_MESSAGE);
+            limpiarCampos();
+        }
+    }//GEN-LAST:event_bModificarEActionPerformed
+
+    private void bReporteEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bReporteEActionPerformed
+        // TODO add your handling code here:
+        html();
+    }//GEN-LAST:event_bReporteEActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bAgregarE;
-    private javax.swing.JButton bBinarioE;
     private javax.swing.JButton bBuscarE;
     private javax.swing.JButton bEliminarE;
     private javax.swing.JButton bModificarE;
@@ -156,4 +252,198 @@ public class pEmpleados extends javax.swing.JPanel {
     private javax.swing.JTextField tPuestoE;
     private javax.swing.JTextField tSalarioE;
     // End of variables declaration//GEN-END:variables
+
+    private void limpiarCampos() {
+        tCodigoE.setText("");
+        tNombreE.setText("");
+        tPuestoE.setText("");
+        tSalarioE.setText("");
+        tCodigoE.requestFocus(); //Solicita la colocacion del cursor en el campo de texto Nit
+    }
+
+    private cEmpleado buscarE(String CodigoE) {
+        Iterator<cEmpleado> ITP = ArregloE.iterator();
+        cEmpleado p = null;
+        while (ITP.hasNext()) {
+            cEmpleado P = ITP.next();
+            if (P.getCodigoEmpleado().equals(CodigoE)) {
+                p = P;
+            }
+        }
+        return p;
+    }
+
+    private boolean buscarC(String e) {
+        boolean flag = false;
+        try {
+            Iterator<cEmpleado> ITP = ArregloE.iterator();
+            while (ITP.hasNext()) {
+                cEmpleado P = ITP.next();
+                if (P.getNombreEmpleado().equals(e)) {
+
+                    flag = true;
+                }
+            }
+        } catch (Exception error) {
+            flag = false;
+            System.out.println("El Erro fue:" + error.getMessage());
+        }
+
+        return flag; //Flag es igual a true solo si lo removio dentro del void
+    }
+
+    private boolean eliminarE(cEmpleado e) {
+        boolean flag = false;
+        try {
+            Iterator<cEmpleado> ITP = ArregloE.iterator();
+            while (ITP.hasNext()) {
+                cEmpleado P = ITP.next();
+                if (P.getCodigoEmpleado().equals(e.getCodigoEmpleado())) {
+                    ITP.remove();
+                    flag = true;
+                    crearbinario();
+                }
+            }
+        } catch (Exception error) {
+            flag = false;
+            System.out.println("El Erro fue:" + error.getMessage());
+        }
+
+        return flag; //Flag es igual a true solo si lo removio dentro del void
+    }
+
+    private boolean modificarE(cEmpleado m) {
+        boolean flag = false;
+        try {
+            Iterator<cEmpleado> ITP = ArregloE.iterator();
+            while (ITP.hasNext()) {
+                cEmpleado P = ITP.next();
+                if (P.getCodigoEmpleado().equals(m.getCodigoEmpleado())) {
+                    flag = true;
+                    P.setCodigoEmpleado(tCodigoE.getText());
+                    P.setNombreEmpleado(tNombreE.getText());
+                    P.setPuestoEmpleado(tPuestoE.getText());
+                    P.setSalarioEmpleado(tSalarioE.getText());
+                    crearbinario();
+                }
+            }
+        } catch (Exception error) {
+            flag = false;
+            System.out.println("El Error fue:" + error.getMessage());
+        }
+
+        return flag; //Flag es igual a true solo si lo removio dentro del void
+    }
+
+    private void html() {
+
+        BufferedWriter ficheroSalida;
+        try {
+            String rows = "";
+            Iterator<cEmpleado> ITP = ArregloE.iterator();
+
+            ficheroSalida = new BufferedWriter(new FileWriter(new File("ReporteE.html")));
+            while (ITP.hasNext()) {
+                cEmpleado P = ITP.next();
+                rows = rows + "            <tr>\n"
+                        + "                <td>" + P.getCodigoEmpleado() + "</td>\n"
+                        + "                <td>" + P.getNombreEmpleado() + "</td>\n"
+                        + "                <td>" + P.getPuestoEmpleado() + "</td>\n"
+                        + "                <td>" + P.getSalarioEmpleado() + "</td>\n"
+                        + "            </tr>";
+            }
+            ficheroSalida.write("<!DOCTYPE html>\n"
+                    + "<html lang=\"en\">\n"
+                    + "\n"
+                    + "<head>\n"
+                    + "    <link href=\"https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css\" rel=\"stylesheet\"\n"
+                    + "        integrity=\"sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3\" crossorigin=\"anonymous\">\n"
+                    + "    <meta charset=\"UTF-8\">\n"
+                    + "    <meta http-equiv=\"X-UA-Compatible\" content=\"IE=edge\">\n"
+                    + "    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n"
+                    + "    <title>Reportes</title>\n"
+                    + "</head>\n"
+                    + "\n"
+                    + "<body class=\"p-4\">\n"
+                    + "    <table class=\"w-100 table table-dark table-hover\">\n"
+                    + "        <thead>\n"
+                    + "            <tr>\n"
+                    + "                <th>Codigo</th>\n"
+                    + "                <th>Nombre</th>\n"
+                    + "                <th>Puesto</th>\n"
+                    + "                <th>Salario</th>\n"
+                    + "            </tr>\n"
+                    + "        </thead>\n"
+                    + "        <tbody>\n"
+                    + rows
+                    + "        </tbody>\n"
+                    + "    </table>\n"
+                    + "</body>\n"
+                    + "\n"
+                    + "</html>");
+            ficheroSalida.close();
+        } catch (IOException error) {
+            System.out.println("El Error fue:" + error.getMessage());
+        }
+    }
+
+    private void leerbinario() {
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
+
+        try {
+
+            fis = new FileInputStream("bEmpleados.dat");
+            ois = new ObjectInputStream(fis);
+            ArregloE = (ArrayList<cEmpleado>) ois.readObject(); //es necesario el casting
+
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (fis != null) {
+                    fis.close();
+                }
+                if (ois != null) {
+                    ois.close();
+                }
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    private void crearbinario() {
+        FileOutputStream fos = null;
+        ObjectOutputStream ous = null;
+
+        try {
+            //Se crea el fichero
+            fos = new FileOutputStream("bEmpleados.dat");
+            ous = new ObjectOutputStream(fos);
+
+            //Se escribe el objeto en el fichero
+            ous.writeObject(ArregloE);
+
+        } catch (FileNotFoundException e) {
+            System.out.println("1" + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("2" + e.getMessage());
+        } finally {
+            try {
+                if (fos != null) {
+                    fos.close();
+                }
+                if (ous != null) {
+                    ous.close();
+                }
+            } catch (IOException e) {
+                System.out.println("3" + e.getMessage());
+            }
+        }
+    }
 }

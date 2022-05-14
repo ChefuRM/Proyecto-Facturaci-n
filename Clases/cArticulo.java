@@ -4,26 +4,13 @@
  */
 package Clases;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Chefu
  */
-public class cArticulos {
-
-    /**
-     * @return the CodigoProveedor
-     */
-    public String getCodigoProveedor() {
-        return CodigoProveedor;
-    }
-
-    /**
-     * @param CodigoProveedor the CodigoProveedor to set
-     */
-    public void setCodigoProveedor(String CodigoProveedor) {
-        this.CodigoProveedor = CodigoProveedor;
-    }
-
+public class cArticulo implements Serializable {
     /**
      * @return the CodigoArticulo
      */
@@ -79,10 +66,17 @@ public class cArticulos {
     public void setCantidad(String Cantidad) {
         this.Cantidad = Cantidad;
     }
-    private String CodigoProveedor;
+
+    public cProveedor getCodigoProveedor() {
+        return CodigoProveedor;
+    }
+
+    public void setCodigoProveedor(cProveedor CodigoProveedor) {
+        this.CodigoProveedor = CodigoProveedor;
+    }
+    private cProveedor CodigoProveedor;
     private String CodigoArticulo;
     private String DescripcionA;
     private String PrecioUnit;
     private String Cantidad;
-
 }

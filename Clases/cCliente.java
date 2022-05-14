@@ -10,7 +10,7 @@ import java.io.Serializable;
  *
  * @author Chefu
  */
-public class cClientes implements Serializable {
+public class cCliente implements Serializable {
 
     public String getNitCliente() {
         return NitCliente;
