@@ -76,6 +76,8 @@ public class pFacturas extends javax.swing.JPanel {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
+        tTotal = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Factura");
@@ -157,6 +159,11 @@ public class pFacturas extends javax.swing.JPanel {
 
         jLabel9.setText("Subtotal.");
 
+        tTotal.setEditable(false);
+
+        jLabel10.setHorizontalAlignment(javax.swing.SwingConstants.RIGHT);
+        jLabel10.setText("Total:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -199,18 +206,22 @@ public class pFacturas extends javax.swing.JPanel {
                                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 56, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jLabel7))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel7)
+                                            .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addGap(7, 7, 7)
                                         .addComponent(jLabel8)
                                         .addGap(66, 66, 66)
-                                        .addComponent(jLabel9)))))
+                                        .addComponent(jLabel9))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jScrollPane4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 54, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                            .addComponent(tTotal, javax.swing.GroupLayout.DEFAULT_SIZE, 150, Short.MAX_VALUE)
+                                            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))))
                         .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -265,7 +276,11 @@ public class pFacturas extends javax.swing.JPanel {
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 180, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane2)
                     .addComponent(jScrollPane3))
-                .addGap(79, 79, 79))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tTotal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel10))
+                .addGap(51, 51, 51))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -316,6 +331,7 @@ public class pFacturas extends javax.swing.JPanel {
     private javax.swing.JComboBox<String> cbEmpleados;
     private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -335,6 +351,7 @@ public class pFacturas extends javax.swing.JPanel {
     private javax.swing.JList<String> lPrecioUnitA;
     private javax.swing.JList<String> lSubtotalA;
     private javax.swing.JTextField tPuestoE;
+    private javax.swing.JTextField tTotal;
     // End of variables declaration//GEN-END:variables
     private void addpanel(JPanel p) {
         p.setLocation(0, 0);
@@ -481,20 +498,22 @@ public class pFacturas extends javax.swing.JPanel {
         DefaultListModel<String> ModeloLista3 = new DefaultListModel<>();
         DefaultListModel<String> ModeloLista4 = new DefaultListModel<>();
         DefaultListModel<String> ModeloLista5 = new DefaultListModel<>();
-
+        Float Total = 0f;
         for (cVentaArticulo contA : ArregloVA) {//FORMA DIFERENTE DE NO USAR UN ITERADOR
             Float SubTotal = 1f;//No se puede inicializar un float con un valor
             ModeloLista1.addElement(contA.getCodigoArticulo());
             ModeloLista2.addElement(contA.getDescripcionA());
             ModeloLista3.addElement(contA.getPrecioUnit().toString());
             ModeloLista4.addElement(contA.getCantidad().toString());
-            SubTotal=contA.getPrecioUnit()*contA.getCantidad();
+            SubTotal = contA.getPrecioUnit() * contA.getCantidad();
             ModeloLista5.addElement(SubTotal.toString());
+            Total = Total + SubTotal;
         }
         lCodigoA.setModel(ModeloLista1);
         lDescripcionA.setModel(ModeloLista2);
         lPrecioUnitA.setModel(ModeloLista3);
         lCantidadA.setModel(ModeloLista4);
         lSubtotalA.setModel(ModeloLista5);
+        tTotal.setText(Total.toString());
     }
 }
