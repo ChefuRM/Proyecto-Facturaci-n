@@ -387,7 +387,7 @@ public class pEmpleados extends javax.swing.JPanel {
         }
     }
 
-    private void leerbinario() {
+    public static void leerbinario() {
         FileInputStream fis = null;
         ObjectInputStream ois = null;
 

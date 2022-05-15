@@ -28,11 +28,15 @@ public class pClientes extends javax.swing.JPanel {
      * Creates new form pClientes
      */
     cCliente ClienteEncontrado = null;
-    ArrayList<cCliente> ArregloC = new ArrayList<cCliente>();
+
+    public static ArrayList<cCliente> getArregloC() {
+        return ArregloC;
+    }
+    private static ArrayList<cCliente> ArregloC = new ArrayList<cCliente>();
 
     public pClientes() {
         initComponents();
-        binariol();
+        leerBinario();
     }
 
     /**
@@ -53,9 +57,9 @@ public class pClientes extends javax.swing.JPanel {
         bBuscarC = new javax.swing.JButton();
         eDireccionC = new javax.swing.JLabel();
         bModificarC = new javax.swing.JButton();
-        bReporteC = new javax.swing.JButton();
         tNitC = new javax.swing.JTextField();
         tNombreC = new javax.swing.JTextField();
+        bReporteC = new javax.swing.JButton();
 
         lProveedores.setText("Clientes");
 
@@ -107,31 +111,33 @@ public class pClientes extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(eDireccionC)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tDireccionC, javax.swing.GroupLayout.PREFERRED_SIZE, 285, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 7, Short.MAX_VALUE)
+                        .addComponent(bEliminarC)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(bModificarC))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(255, 255, 255)
+                        .addComponent(lProveedores)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(eNombreC)
                             .addComponent(eNitC))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(tNombreC, javax.swing.GroupLayout.DEFAULT_SIZE, 286, Short.MAX_VALUE)
-                            .addComponent(tNitC)))
-                    .addComponent(lProveedores)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addComponent(eDireccionC)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(tDireccionC))
-                        .addGroup(javax.swing.GroupLayout.Alignment.LEADING, layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(bAgregarC)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(bBuscarC)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(bEliminarC)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(bModificarC)
-                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                            .addComponent(bReporteC))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                            .addComponent(tNitC))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(bAgregarC, javax.swing.GroupLayout.PREFERRED_SIZE, 79, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                .addComponent(bBuscarC, javax.swing.GroupLayout.PREFERRED_SIZE, 78, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(bReporteC, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -140,23 +146,21 @@ public class pClientes extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eNitC)
-                    .addComponent(tNitC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tNitC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bAgregarC)
+                    .addComponent(bBuscarC))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eNombreC)
-                    .addComponent(tNombreC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tNombreC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(bReporteC))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(eDireccionC)
-                    .addComponent(tDireccionC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bAgregarC)
-                    .addComponent(bBuscarC)
-                    .addComponent(bEliminarC)
+                    .addComponent(tDireccionC, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(bModificarC)
-                    .addComponent(bReporteC))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(bEliminarC))
+                .addContainerGap(14, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
@@ -167,13 +171,14 @@ public class pClientes extends javax.swing.JPanel {
             oClientes.setNitCliente(tNitC.getText());
             oClientes.setNombreCliente(tNombreC.getText());
             oClientes.setDireccionCliente(tDireccionC.getText());
-
+            JOptionPane.showMessageDialog(null, "Cliente Guardado", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
             ArregloC.add(oClientes);
         } else {
-            JOptionPane.showMessageDialog(null, "Proveedor Existente", "MENSAJE", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Cliente Existente", "MENSAJE", JOptionPane.ERROR_MESSAGE);
         }
         setteo();
         binarioa();
+        pFacturas.setearCB();
     }//GEN-LAST:event_bAgregarCActionPerformed
 
     private void bEliminarCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarCActionPerformed
@@ -182,6 +187,7 @@ public class pClientes extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Cliente Eliminado Correctamente", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
             setteo();
             binarioa();
+            pFacturas.setearCB();
         } else {
             JOptionPane.showMessageDialog(null, "Cliente No Eliminado", "MENSAJE", JOptionPane.ERROR_MESSAGE);
             setteo();
@@ -208,6 +214,7 @@ public class pClientes extends javax.swing.JPanel {
             JOptionPane.showMessageDialog(null, "Cliente Modificado Correctamente", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
             setteo();
             binarioa();
+            pFacturas.setearCB();
         } else {
             JOptionPane.showMessageDialog(null, "Cliente No Modificado", "MENSAJE", JOptionPane.ERROR_MESSAGE);
             setteo();
@@ -324,9 +331,9 @@ public class pClientes extends javax.swing.JPanel {
             while (ITC.hasNext()) {
                 cCliente C = ITC.next();
                 rows = rows + "            <tr>\n"
-                        + "                <td>" + C.getNitCliente()+ "</td>\n"
-                        + "                <td>" + C.getNombreCliente()+ "</td>\n"
-                        + "                <td>" + C.getDireccionCliente()+ "</td>\n"
+                        + "                <td>" + C.getNitCliente() + "</td>\n"
+                        + "                <td>" + C.getNombreCliente() + "</td>\n"
+                        + "                <td>" + C.getDireccionCliente() + "</td>\n"
                         + "            </tr>";
             }
             ficheroSalida.write("<!DOCTYPE html>\n"
@@ -363,13 +370,13 @@ public class pClientes extends javax.swing.JPanel {
         }
     }
 
-    public void binariol() {
+    public static void leerBinario() {
         FileInputStream fis = null;
         ObjectInputStream ois = null;
 
         try {
 
-            fis = new FileInputStream("CLIE.dat");
+            fis = new FileInputStream("bClientes.dat");
             ois = new ObjectInputStream(fis);
             ArregloC = (ArrayList<cCliente>) ois.readObject(); //es necesario el casting
 
@@ -399,7 +406,7 @@ public class pClientes extends javax.swing.JPanel {
 
         try {
             //Se crea el fichero
-            fos = new FileOutputStream("CLIE.dat");
+            fos = new FileOutputStream("bClientes.dat");
             ous = new ObjectOutputStream(fos);
 
             //Se escribe el objeto en el fichero

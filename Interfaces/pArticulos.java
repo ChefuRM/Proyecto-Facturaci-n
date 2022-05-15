@@ -464,7 +464,7 @@ public class pArticulos extends javax.swing.JPanel {
         }
     }
 
-    private void leerBinarioAr() {
+   public static void leerBinarioAr() {
         FileInputStream fis = null;
         ObjectInputStream ois = null;
 
