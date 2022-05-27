@@ -7,9 +7,18 @@ package Interfaces;
 import Clases.cArticulo;
 import Clases.cCliente;
 import Clases.cEmpleado;
+import Clases.cFactura;
 import Clases.cVentaArticulo;
 import java.awt.BorderLayout;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Iterator;
 import javax.swing.DefaultListModel;
 import javax.swing.JOptionPane;
@@ -25,6 +34,11 @@ public class pFacturas extends javax.swing.JPanel {
      * Creates new form pFacturas
      */
     ArrayList<cVentaArticulo> ArregloVA = new ArrayList<cVentaArticulo>();
+
+    public static ArrayList<cFactura> getArregloFac() {
+        return ArregloFac;
+    }
+    private static ArrayList<cFactura> ArregloFac = new ArrayList<cFactura>();
     cCliente ClienteSel = null;
     cEmpleado EmpleadoSel = null;
 
@@ -32,7 +46,9 @@ public class pFacturas extends javax.swing.JPanel {
         pClientes.leerBinario();
         pEmpleados.leerbinario();
         pArticulos.leerBinarioAr();
+        leerbinario();
         initComponents();
+        correlativo();
         setearCB();
         setearCBE();
         setearCBCA();
@@ -86,7 +102,7 @@ public class pFacturas extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         bRVenta = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        lCorrelativo = new javax.swing.JLabel();
 
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel1.setText("Factura");
@@ -204,6 +220,8 @@ public class pFacturas extends javax.swing.JPanel {
 
         jLabel13.setText("No. Correlativo");
 
+        lCorrelativo.setText("------");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -213,9 +231,9 @@ public class pFacturas extends javax.swing.JPanel {
                 .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel13)
-                .addGap(0, 0, 0)
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(15, 15, 15))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(lCorrelativo, javax.swing.GroupLayout.PREFERRED_SIZE, 55, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -313,11 +331,11 @@ public class pFacturas extends javax.swing.JPanel {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(0, 0, 0)
+                .addGap(3, 3, 3)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jLabel13)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(lCorrelativo, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(bAgregarCl)
@@ -422,6 +440,21 @@ public class pFacturas extends javax.swing.JPanel {
     private void bRVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRVentaActionPerformed
         // TODO add your handling code here:
         if (validar()) {
+            //GUARDAR FACTURA
+            cFactura f = new cFactura();
+            f.setCliente(ClienteSel);
+            f.setEmpleado(EmpleadoSel);
+            f.setVentas(ArregloVA);
+            f.setCorrelativo(lCorrelativo.getText());
+            f.setTotal(tTotal.getText());
+            f.setTotalIva(tIVA.getText());
+            String formatoF = "dd/MM/yyyy";
+            SimpleDateFormat formadate = new SimpleDateFormat(formatoF);
+            f.setFecha(formadate.format(new Date()));
+            crearbinario();
+
+            ArregloFac.add(f);
+
             JOptionPane.showMessageDialog(null, "Venta realizada correctamente :D", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
         } else {
             JOptionPane.showMessageDialog(null, "Venta no realizada correctamente (", "MENSAJE", JOptionPane.ERROR_MESSAGE);
@@ -458,11 +491,11 @@ public class pFacturas extends javax.swing.JPanel {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel lCCambio;
     private javax.swing.JLabel lCambio;
     private javax.swing.JList<String> lCantidadA;
     private javax.swing.JList<String> lCodigoA;
+    private javax.swing.JLabel lCorrelativo;
     private javax.swing.JList<String> lDescripcionA;
     private javax.swing.JList<String> lPrecioUnitA;
     private javax.swing.JList<String> lSubtotalA;
@@ -702,4 +735,75 @@ public class pFacturas extends javax.swing.JPanel {
         return flag;
     }
 
+    private void correlativo() {
+        if (ArregloFac.size() > 0) {
+            for (cFactura v : ArregloFac) {
+                if (ArregloFac.indexOf(v) == ArregloFac.size()) {
+                    Integer correlativo = 1 + Integer.parseInt(v.getCorrelativo());
+                }
+            }
+        } else {
+            lCorrelativo.setText("1");
+        }
+    }
+
+    public static void leerbinario() {
+        FileInputStream fis = null;
+        ObjectInputStream ois = null;
+
+        try {
+
+            fis = new FileInputStream("bFacturas.dat");
+            ois = new ObjectInputStream(fis);
+            ArregloFac = (ArrayList<cFactura>) ois.readObject(); //es necesario el casting
+
+        } catch (FileNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (ClassNotFoundException e) {
+            System.out.println(e.getMessage());
+        } catch (IOException e) {
+            System.out.println(e.getMessage());
+        } finally {
+            try {
+                if (fis != null) {
+                    fis.close();
+                }
+                if (ois != null) {
+                    ois.close();
+                }
+            } catch (IOException e) {
+                System.out.println(e.getMessage());
+            }
+        }
+    }
+
+    private void crearbinario() {
+        FileOutputStream fos = null;
+        ObjectOutputStream ous = null;
+
+        try {
+            //Se crea el fichero
+            fos = new FileOutputStream("bFacturas.dat");
+            ous = new ObjectOutputStream(fos);
+
+            //Se escribe el objeto en el fichero
+            ous.writeObject(ArregloFac);
+
+        } catch (FileNotFoundException e) {
+            System.out.println("1" + e.getMessage());
+        } catch (IOException e) {
+            System.out.println("2" + e.getMessage());
+        } finally {
+            try {
+                if (fos != null) {
+                    fos.close();
+                }
+                if (ous != null) {
+                    ous.close();
+                }
+            } catch (IOException e) {
+                System.out.println("3" + e.getMessage());
+            }
+        }
+    }
 }
