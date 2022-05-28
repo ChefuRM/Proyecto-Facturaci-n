@@ -34,6 +34,7 @@
                   <Component id="bProveedores" alignment="0" max="32767" attributes="0"/>
                   <Component id="bEmpleados" alignment="0" max="32767" attributes="0"/>
                   <Component id="bFacturas" max="32767" attributes="0"/>
+                  <Component id="bRegistroFac" max="32767" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="PanelPrincipal" max="32767" attributes="0"/>
@@ -57,7 +58,9 @@
                       <Component id="bEmpleados" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="bFacturas" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="362" max="32767" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="bRegistroFac" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace min="0" pref="322" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -78,6 +81,9 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="10"/>
+      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">
@@ -122,6 +128,14 @@
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bFacturasActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="bRegistroFac">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Registro de Facturas"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="bRegistroFacActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

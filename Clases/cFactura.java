@@ -1,4 +1,3 @@
-
 package Clases;
 
 import java.io.Serializable;
@@ -8,7 +7,7 @@ import java.util.ArrayList;
  *
  * @author Chefu
  */
-public class cFactura implements Serializable{
+public class cFactura implements Serializable {
 
     /**
      * @return the cliente
@@ -107,6 +106,14 @@ public class cFactura implements Serializable{
     public void setCorrelativo(String correlativo) {
         this.correlativo = correlativo;
     }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
     private cCliente cliente;
     private cEmpleado empleado;
     private ArrayList<cVentaArticulo> ventas = new ArrayList<cVentaArticulo>();
@@ -114,5 +121,5 @@ public class cFactura implements Serializable{
     private String totalIva;
     private String fecha;
     private String correlativo;
-    
+    private String estado;
 }

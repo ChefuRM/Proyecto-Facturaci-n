@@ -4,11 +4,13 @@
  */
 package Clases;
 
+import java.io.Serializable;
+
 /**
  *
  * @author Chefu
  */
-public class cVentaArticulo {
+public class cVentaArticulo implements Serializable {
 
     public String getCodigoArticulo() {
         return CodigoArticulo;
@@ -42,8 +44,16 @@ public class cVentaArticulo {
         this.Cantidad = Cantidad;
     }
 
+    public String getNombreArticulo() {
+        return NombreArticulo;
+    }
+
+    public void setNombreArticulo(String NombreArticulo) {
+        this.NombreArticulo = NombreArticulo;
+    }
     private String CodigoArticulo;
     private String DescripcionA;
     private Float PrecioUnit;
     private Integer Cantidad;
+    private String NombreArticulo;
 }

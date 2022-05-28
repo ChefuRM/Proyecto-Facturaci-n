@@ -14,6 +14,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.Iterator;
 import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -24,10 +25,15 @@ public class pArticulos extends javax.swing.JPanel {
     /**
      * Creates new form pClientes
      */
-    cArticulo ArticuloEncontrado = null;
+    public static cArticulo getArticuloEncontrado() {
+        return ArticuloEncontrado;
+    }
+
+    private static cArticulo ArticuloEncontrado = null;
     cProveedor ProveedorEncontrado = null;
 
     public static ArrayList<cArticulo> getArregloA() {
+        leerBinarioAr();
         return ArregloA;
     }
 
@@ -37,7 +43,7 @@ public class pArticulos extends javax.swing.JPanel {
         pProveedores.leerbinario();
         initComponents();
         leerBinarioAr();
-        cbProveedores.addItem("Seleccione Codigo de Proveedor");
+        cbProveedores.addItem("");
         setearCB();
     }
 
@@ -67,6 +73,8 @@ public class pArticulos extends javax.swing.JPanel {
         bReporteA = new javax.swing.JButton();
         cbProveedores = new javax.swing.JComboBox<>();
         tCodigoPr = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        tNombreA = new javax.swing.JTextField();
 
         lArticulos.setText("Articulos");
 
@@ -121,6 +129,10 @@ public class pArticulos extends javax.swing.JPanel {
             }
         });
 
+        tCodigoPr.setEditable(false);
+
+        jLabel1.setText("Nombre de Articulo:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -128,50 +140,55 @@ public class pArticulos extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(263, 263, 263)
-                                .addComponent(lArticulos))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(eDescripcionA))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(ePrecioU))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(eCantidad)))
-                        .addGap(0, 0, Short.MAX_VALUE))
+                        .addGap(263, 263, 263)
+                        .addComponent(lArticulos)
+                        .addGap(0, 277, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(eCodigoA)
-                                .addGap(51, 51, 51)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(tDescripcionA)
-                                    .addComponent(tCodigoA)
-                                    .addComponent(tPrecioU)
-                                    .addComponent(tCantidad)))
+                                .addComponent(eCodigoP)
+                                .addGap(22, 22, 22)
+                                .addComponent(tCodigoPr)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(cbProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(bAgregarA)
-                                    .addComponent(eCodigoP)
-                                    .addComponent(bBuscarA))
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(eCodigoA)
+                                    .addComponent(jLabel1))
+                                .addGap(46, 46, 46)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tCodigoA)
+                                    .addComponent(tNombreA)))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(eCantidad)
+                                .addGap(104, 104, 104)
+                                .addComponent(tCantidad))
+                            .addGroup(layout.createSequentialGroup()
+                                .addComponent(eDescripcionA)
+                                .addGap(89, 89, 89)
+                                .addComponent(tDescripcionA))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(124, 124, 124)
+                                        .addComponent(bAgregarA)
+                                        .addGap(172, 172, 172)
                                         .addComponent(bEliminarA)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 127, Short.MAX_VALUE)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(bReporteA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(bModificarA, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                        .addGap(43, 43, 43))
-                                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                        .addGap(22, 22, 22)
-                                        .addComponent(tCodigoPr)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                        .addComponent(cbProveedores, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))))))
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(bModificarA))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(bBuscarA)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(bReporteA, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGap(43, 43, 43))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(ePrecioU)
+                        .addGap(73, 73, 73)
+                        .addComponent(tPrecioU)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -190,45 +207,60 @@ public class pArticulos extends javax.swing.JPanel {
                     .addComponent(tCodigoA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(tNombreA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(eDescripcionA)
                     .addComponent(tDescripcionA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ePrecioU)
                     .addComponent(tPrecioU, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(eCantidad)
                     .addComponent(tCantidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(36, 36, 36)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bAgregarA)
-                    .addComponent(bEliminarA)
-                    .addComponent(bModificarA))
                 .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(bBuscarA)
-                    .addComponent(bReporteA))
-                .addContainerGap(230, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(bAgregarA)
+                            .addComponent(bEliminarA))
+                        .addGap(18, 18, 18)
+                        .addComponent(bBuscarA))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(bModificarA)
+                        .addGap(18, 18, 18)
+                        .addComponent(bReporteA)))
+                .addContainerGap(207, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void bAgregarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bAgregarAActionPerformed
         // TODO add your handling code here:
-        if (!buscarAr(tCodigoA.getText())) {
-            cArticulo oArticulos = new cArticulo();
-            oArticulos.setCodigoProveedor(ProveedorEncontrado);
-            oArticulos.setCodigoArticulo(tCodigoA.getText());
-            oArticulos.setDescripcionA(tDescripcionA.getText());
-            oArticulos.setPrecioUnit(tPrecioU.getText());
-            oArticulos.setCantidad(tCantidad.getText());
-            JOptionPane.showMessageDialog(null, "Articulo Agregado", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
-            ArregloA.add(oArticulos);
+        JTextField[] nombre = new JTextField[]{tCodigoPr, tCodigoA, tNombreA, tDescripcionA, tPrecioU, tCantidad};//Corchetes cuadrados sirven para entender que la variable interna es un array de objetos
+        if (!ValidarV(nombre)) {
+            if (!buscarAr(tCodigoA.getText(), tNombreA.getText())) {
+                cArticulo oArticulos = new cArticulo();
+                oArticulos.setCodigoProveedor(ProveedorEncontrado);
+                oArticulos.setCodigoArticulo(tCodigoA.getText());
+                oArticulos.setNombreArticulo(tNombreA.getText());
+                oArticulos.setDescripcionA(tDescripcionA.getText());
+                oArticulos.setPrecioUnit(tPrecioU.getText());
+                oArticulos.setCantidad(tCantidad.getText());
+                JOptionPane.showMessageDialog(null, "Articulo Agregado", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
+                ArregloA.add(oArticulos);
+                limpiarCampos();
+                crearBinarioAr();
+            } else {
+                JOptionPane.showMessageDialog(null, "Articulo Existente", "MENSAJE", JOptionPane.ERROR_MESSAGE);
+            }
         } else {
-            JOptionPane.showMessageDialog(null, "Articulo Existente", "MENSAJE", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null, "Llene TODOS los campos porfavor", "MENSAJE", JOptionPane.ERROR_MESSAGE);
         }
-        limpiarCampos();
-        crearBinario();
+
+
     }//GEN-LAST:event_bAgregarAActionPerformed
 
     private void bEliminarAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEliminarAActionPerformed
@@ -236,7 +268,7 @@ public class pArticulos extends javax.swing.JPanel {
         if (eliminarA(ArticuloEncontrado) && ArticuloEncontrado != null) {
             JOptionPane.showMessageDialog(null, "Articulo Eliminado Correctamente", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
             limpiarCampos();
-            crearBinario();
+            crearBinarioAr();
         } else {
             JOptionPane.showMessageDialog(null, "Articulo No Eliminado", "MENSAJE", JOptionPane.ERROR_MESSAGE);
             limpiarCampos();
@@ -249,7 +281,7 @@ public class pArticulos extends javax.swing.JPanel {
 
             JOptionPane.showMessageDialog(null, "Articulo Modificado Correctamente", "MENSAJE", JOptionPane.INFORMATION_MESSAGE);
             limpiarCampos();
-            crearBinario();
+            crearBinarioAr();
         } else {
             JOptionPane.showMessageDialog(null, "Articulos No Modificado", "MENSAJE", JOptionPane.ERROR_MESSAGE);
             limpiarCampos();
@@ -261,7 +293,9 @@ public class pArticulos extends javax.swing.JPanel {
         ArticuloEncontrado = buscarA(tCodigoA.getText());
         if (ArticuloEncontrado != null) {
             tCodigoPr.setText(ArticuloEncontrado.getCodigoProveedor().getCodigoProveedorP());
+            ProveedorEncontrado = buscarP(tCodigoPr.getText());
             tCodigoA.setText(ArticuloEncontrado.getCodigoArticulo());
+            tNombreA.setText(ArticuloEncontrado.getNombreArticulo());
             tDescripcionA.setText(ArticuloEncontrado.getDescripcionA());
             tPrecioU.setText(ArticuloEncontrado.getPrecioUnit());
             tCantidad.setText(ArticuloEncontrado.getCantidad());
@@ -295,11 +329,13 @@ public class pArticulos extends javax.swing.JPanel {
     private javax.swing.JLabel eCodigoP;
     private javax.swing.JLabel eDescripcionA;
     private javax.swing.JLabel ePrecioU;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel lArticulos;
     private javax.swing.JTextField tCantidad;
     private javax.swing.JTextField tCodigoA;
     private javax.swing.JTextField tCodigoPr;
     private javax.swing.JTextField tDescripcionA;
+    private javax.swing.JTextField tNombreA;
     private javax.swing.JTextField tPrecioU;
     // End of variables declaration//GEN-END:variables
 
@@ -315,32 +351,33 @@ public class pArticulos extends javax.swing.JPanel {
     private void limpiarCampos() {
         tCodigoPr.setText("");
         tCodigoA.setText("");
+        tNombreA.setText("");
         tDescripcionA.setText("");
         tPrecioU.setText("");
         tCantidad.setText("");
         cbProveedores.setSelectedIndex(0);
     }
 
-    private boolean buscarAr(String e) {
+    private boolean buscarAr(String e, String n) {
         boolean flag = false;
         try {
             Iterator<cArticulo> ITP = ArregloA.iterator();
             while (ITP.hasNext()) {
                 cArticulo P = ITP.next();
-                if (P.getCodigoArticulo().equals(e)) {
+                if (P.getCodigoArticulo().equals(e) || P.getNombreArticulo().equals(n)) {
 
                     flag = true;
                 }
             }
         } catch (Exception error) {
-            flag = false;
+            flag = true;
             System.out.println("El Erro fue:" + error.getMessage());
         }
 
         return flag; //Flag es igual a true solo si lo removio dentro del void
     }
 
-    private cArticulo buscarA(String CodigoA) {
+    public static cArticulo buscarA(String CodigoA) {
         Iterator<cArticulo> ITP = ArregloA.iterator();
         cArticulo p = null;
         ArticuloEncontrado = null;
@@ -375,7 +412,7 @@ public class pArticulos extends javax.swing.JPanel {
                 if (P.getCodigoArticulo().equals(a.getCodigoArticulo())) {
                     ITP.remove();
                     flag = true;
-                    crearBinario();
+                    crearBinarioAr();
                 }
             }
         } catch (Exception error) {
@@ -399,7 +436,7 @@ public class pArticulos extends javax.swing.JPanel {
                     P.setDescripcionA(tDescripcionA.getText());
                     P.setPrecioUnit(tPrecioU.getText());
                     P.setCantidad(tCantidad.getText());
-                    crearBinario();
+                    crearBinarioAr();
                 }
             }
         } catch (Exception error) {
@@ -464,7 +501,7 @@ public class pArticulos extends javax.swing.JPanel {
         }
     }
 
-   public static void leerBinarioAr() {
+    public static void leerBinarioAr() {
         FileInputStream fis = null;
         ObjectInputStream ois = null;
 
@@ -494,7 +531,7 @@ public class pArticulos extends javax.swing.JPanel {
         }
     }
 
-    private void crearBinario() {
+    public static void crearBinarioAr() {
         FileOutputStream fos = null;
         ObjectOutputStream ous = null;
 
@@ -522,5 +559,19 @@ public class pArticulos extends javax.swing.JPanel {
                 System.out.println("3" + e.getMessage());
             }
         }
+    }
+
+    private boolean ValidarV(JTextField[] nombre) {
+        boolean flag = false;
+        for (JTextField textf : nombre) {
+
+            if ("".equals(textf.getText())) {
+                System.out.println(textf.getText());
+                textf.requestFocus();
+
+                return true;
+            }
+        }
+        return flag;
     }
 }

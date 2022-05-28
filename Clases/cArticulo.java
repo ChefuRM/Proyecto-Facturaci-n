@@ -11,6 +11,7 @@ import java.io.Serializable;
  * @author Chefu
  */
 public class cArticulo implements Serializable {
+
     /**
      * @return the CodigoArticulo
      */
@@ -74,9 +75,19 @@ public class cArticulo implements Serializable {
     public void setCodigoProveedor(cProveedor CodigoProveedor) {
         this.CodigoProveedor = CodigoProveedor;
     }
+
+    public String getNombreArticulo() {
+        return NombreArticulo;
+    }
+
+    public void setNombreArticulo(String NombreArticulo) {
+        this.NombreArticulo = NombreArticulo;
+    }
+
     private cProveedor CodigoProveedor;
     private String CodigoArticulo;
     private String DescripcionA;
     private String PrecioUnit;
     private String Cantidad;
+    private String NombreArticulo;
 }

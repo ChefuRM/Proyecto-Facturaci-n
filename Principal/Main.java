@@ -36,6 +36,7 @@ public class Main extends javax.swing.JFrame {
         bProveedores = new javax.swing.JButton();
         bEmpleados = new javax.swing.JButton();
         bFacturas = new javax.swing.JButton();
+        bRegistroFac = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -84,6 +85,13 @@ public class Main extends javax.swing.JFrame {
             }
         });
 
+        bRegistroFac.setText("Registro de Facturas");
+        bRegistroFac.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bRegistroFacActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -95,7 +103,8 @@ public class Main extends javax.swing.JFrame {
                     .addComponent(bArticulos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 190, Short.MAX_VALUE)
                     .addComponent(bProveedores, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(bEmpleados, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(bFacturas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(bFacturas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(bRegistroFac, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(PanelPrincipal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
@@ -116,7 +125,9 @@ public class Main extends javax.swing.JFrame {
                         .addComponent(bEmpleados)
                         .addGap(18, 18, 18)
                         .addComponent(bFacturas)
-                        .addGap(0, 362, Short.MAX_VALUE)))
+                        .addGap(18, 18, 18)
+                        .addComponent(bRegistroFac)
+                        .addGap(0, 322, Short.MAX_VALUE)))
                 .addContainerGap())
         );
 
@@ -142,6 +153,11 @@ public class Main extends javax.swing.JFrame {
         // TODO add your handling code here:
         addpanel(new pFacturas());
     }//GEN-LAST:event_bFacturasActionPerformed
+
+    private void bRegistroFacActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bRegistroFacActionPerformed
+        // TODO add your handling code here:
+        addpanel(new pRegistroF());
+    }//GEN-LAST:event_bRegistroFacActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,20 +194,28 @@ public class Main extends javax.swing.JFrame {
         });
     }
 
+    public JPanel getPanelPrincipal() {
+        return PanelPrincipal;
+    }
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JPanel PanelPrincipal;
+    private static javax.swing.JPanel PanelPrincipal;
     private javax.swing.JButton bArticulos;
     private javax.swing.JButton bEmpleados;
     private javax.swing.JButton bFacturas;
     private javax.swing.JButton bProveedores;
+    private javax.swing.JButton bRegistroFac;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
-    private void addpanel(JPanel p) {
+    private static void addpanel(JPanel p) {
         p.setLocation(0, 0);
         p.setSize(PanelPrincipal.getWidth(), PanelPrincipal.getHeight());
         PanelPrincipal.removeAll();
         PanelPrincipal.add(p, BorderLayout.CENTER);
         PanelPrincipal.revalidate();
         PanelPrincipal.repaint();
+    }
+    public static void resetpanel(){
+        addpanel(new pFacturas());
     }
 }
