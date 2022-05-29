@@ -114,6 +114,30 @@ public class cFactura implements Serializable {
     public void setEstado(String estado) {
         this.estado = estado;
     }
+
+    public String getCaja() {
+        return caja;
+    }
+
+    public void setCaja(String caja) {
+        this.caja = caja;
+    }
+
+    public String getPago() {
+        return pago;
+    }
+
+    public void setPago(String pago) {
+        this.pago = pago;
+    }
+
+    public String getCambio() {
+        return cambio;
+    }
+
+    public void setCambio(String cambio) {
+        this.cambio = cambio;
+    }
     private cCliente cliente;
     private cEmpleado empleado;
     private ArrayList<cVentaArticulo> ventas = new ArrayList<cVentaArticulo>();
@@ -122,4 +146,7 @@ public class cFactura implements Serializable {
     private String fecha;
     private String correlativo;
     private String estado;
+    private String caja;
+    private String pago;
+    private String cambio;
 }

@@ -451,6 +451,9 @@ public class pFacturas extends javax.swing.JPanel {
             SimpleDateFormat formadate = new SimpleDateFormat(formatoF);
             f.setFecha(formadate.format(new Date()));
             f.setEstado("Efectuada");
+            f.setCaja(cbCajas.getSelectedItem().toString());
+            f.setCambio(lCCambio.getText());
+            f.setPago(tPago.getText());
 
             ArregloFac.add(f);
             crearbinario();
@@ -842,13 +845,13 @@ public class pFacturas extends javax.swing.JPanel {
     private boolean validarinv() {
         boolean flag = false;
         for (cVentaArticulo act : ArregloVA) {
-            for (cArticulo art : pArticulos.getArregloA()) {
-                System.out.println(art.getCodigoArticulo());
-                System.out.println(act.getCodigoArticulo());
-                if (act.getCodigoArticulo().equals(art.getCodigoArticulo())) {
-                    Integer newcant = Integer.parseInt(art.getCantidad()) - act.getCantidad();
-                    if(newcant<=0){
-                        return true;
+            if (act.getCodigoArticulo().equals(cbCArticulos.getSelectedItem().toString())) {
+                for (cArticulo art : pArticulos.getArregloA()) {
+                    if (act.getCodigoArticulo().equals(art.getCodigoArticulo())) {
+                        Integer newcant = Integer.parseInt(art.getCantidad()) - (act.getCantidad()+Integer.parseInt(cbCantArticulos.getSelectedItem().toString()));
+                        if (newcant < 0) {
+                            return true;
+                        }
                     }
                 }
             }

@@ -433,6 +433,7 @@ public class pArticulos extends javax.swing.JPanel {
                     flag = true;
                     P.setCodigoProveedor(ProveedorEncontrado);
                     P.setCodigoArticulo(tCodigoA.getText());
+                    P.setNombreArticulo(tNombreA.getText());
                     P.setDescripcionA(tDescripcionA.getText());
                     P.setPrecioUnit(tPrecioU.getText());
                     P.setCantidad(tCantidad.getText());
@@ -460,6 +461,7 @@ public class pArticulos extends javax.swing.JPanel {
                 rows = rows + "            <tr>\n"
                         + "                <td>" + P.getCodigoProveedor().getCodigoProveedorP() + "</td>\n"
                         + "                <td>" + P.getCodigoArticulo() + "</td>\n"
+                        + "                <td>" + P.getNombreArticulo() + "</td>\n"
                         + "                <td>" + P.getDescripcionA() + "</td>\n"
                         + "                <td>" + P.getPrecioUnit() + "</td>\n"
                         + "                <td>" + P.getCantidad() + "</td>\n"
@@ -483,6 +485,7 @@ public class pArticulos extends javax.swing.JPanel {
                     + "            <tr>\n"
                     + "                <th>Codigo de Proveedor</th>\n"
                     + "                <th>Codigo de Articulo</th>\n"
+                    + "                <th>Nombre de Articulo</th>\n"
                     + "                <th>Descripcion</th>\n"
                     + "                <th>Precio Unitario</th>\n"
                     + "                <th>Cantidad</th>\n"
